@@ -40,6 +40,7 @@ function landingHtml() {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>instaSEPA — open standards for instant SEPA payments</title>
 <meta name="description" content="EPC QR Code and SEPA Request-to-Pay: the open, pan-European standards that give SEPA payments a user experience as good as cards." />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root {
     --eu-blue: #003399;
@@ -99,6 +100,23 @@ function landingHtml() {
   .card p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.65; color: var(--muted); }
   .card p:last-child { margin-bottom: 0; }
   .card strong { color: var(--ink); }
+  .epc-demo {
+    display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap;
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .epc-fields { flex: 1 1 300px; min-width: 260px; }
+  .epc-fields h3 { margin: 0 0 10px; font-size: 14px; color: var(--eu-blue); text-transform: uppercase; letter-spacing: 0.05em; }
+  .epc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .epc-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .epc-table td:first-child { color: var(--muted); white-space: nowrap; width: 42%; }
+  .epc-table td:last-child { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; color: var(--ink); word-break: break-all; }
+  .epc-table tr:last-child td { border-bottom: none; }
+  .epc-qr { flex: 0 0 auto; text-align: center; }
+  .epc-qr .qrbox {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px; display: inline-block;
+  }
+  .epc-qr .cap { font-size: 12.5px; color: var(--muted); margin-top: 10px; max-width: 220px; line-height: 1.5; }
   footer {
     text-align: center; padding: 28px 20px 40px; font-size: 14px; color: var(--muted);
   }
@@ -125,6 +143,27 @@ function landingHtml() {
     <h2>The EPC QR Code standard <span class="tag">EPC069-12</span></h2>
     <p>The <strong>EPC QR Code</strong> is the European Payments Council's open standard for <strong>scan-to-pay</strong> SEPA Credit Transfers. One QR code encodes everything a payment needs — beneficiary name, IBAN, amount and reference — so the payer simply scans it with their own banking app, sees a fully pre-filled transfer, and approves it with one tap.</p>
     <p>No card networks, no interchange fees, no manual IBAN typing — and combined with <strong>SEPA Instant</strong>, the money arrives in seconds. Banking apps in Austria, Belgium, Germany, Finland and the Netherlands already scan it today; when <strong>every</strong> EEA banking app does, any invoice, checkout or donation box in Europe becomes payable in one scan.</p>
+    <div class="epc-demo">
+      <div class="epc-fields">
+        <h3>The elements inside an EPC QR code</h3>
+        <table class="epc-table">
+          <tr><td>Service tag</td><td>BCD</td></tr>
+          <tr><td>Version</td><td>002</td></tr>
+          <tr><td>Character set</td><td>1 (UTF-8)</td></tr>
+          <tr><td>Identification</td><td>SCT (SEPA Credit Transfer)</td></tr>
+          <tr><td>BIC</td><td><em>(optional within the EEA)</em></td></tr>
+          <tr><td>Beneficiary name</td><td>Alexandru Negru</td></tr>
+          <tr><td>Beneficiary IBAN</td><td>RO35REVO0000172343073545</td></tr>
+          <tr><td>Amount</td><td>EUR1.00</td></tr>
+          <tr><td>Purpose code</td><td><em>(optional)</em></td></tr>
+          <tr><td>Remittance info</td><td>unique IBAN by smartIBAN</td></tr>
+        </table>
+      </div>
+      <div class="epc-qr">
+        <div class="qrbox"><div id="epcqr"></div></div>
+        <div class="cap">A live example built from the fields on the left — scan it with your banking app and it pre-fills a <strong>&euro;1.00</strong> SEPA transfer to the maintainer's Revolut account.</div>
+      </div>
+    </div>
   </section>
 
   <section class="card">
@@ -137,6 +176,16 @@ function landingHtml() {
 <footer>
   Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a>
 </footer>
+<script>
+(function () {
+  if (typeof QRCode === 'undefined') return;
+  var payload = 'BCD\\n002\\n1\\nSCT\\n\\nAlexandru Negru\\nRO35REVO0000172343073545\\nEUR1.00\\n\\n\\nunique IBAN by smartIBAN';
+  new QRCode(document.getElementById('epcqr'), {
+    text: payload, width: 180, height: 180,
+    correctLevel: QRCode.CorrectLevel.M,
+  });
+})();
+</script>
 </body>
 </html>`;
 }
