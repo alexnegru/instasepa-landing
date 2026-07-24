@@ -152,11 +152,11 @@ function landingHtml() {
           <tr><td>Character set</td><td>1 (UTF-8)</td></tr>
           <tr><td>Identification</td><td>SCT (SEPA Credit Transfer)</td></tr>
           <tr><td>BIC</td><td><em>(optional within the EEA)</em></td></tr>
-          <tr><td>Beneficiary name</td><td>Alexandru Negru</td></tr>
+          <tr><td>Beneficiary name</td><td>Demo A N</td></tr>
           <tr><td>Beneficiary IBAN</td><td>RO35REVO0000172343073545</td></tr>
           <tr><td>Amount</td><td>EUR1.00</td></tr>
           <tr><td>Purpose code</td><td><em>(optional)</em></td></tr>
-          <tr><td>Remittance info</td><td>unique IBAN by smartIBAN</td></tr>
+          <tr><td>Remittance info</td><td>unique IBAN per trx</td></tr>
         </table>
       </div>
       <div class="epc-qr">
@@ -170,6 +170,23 @@ function landingHtml() {
     <h2>SRTP &mdash; SEPA Request-to-Pay <span class="tag">EPC SRTP scheme</span></h2>
     <p><strong>SEPA Request-to-Pay</strong> is the EPC scheme that lets a payee send a structured payment request (pain.013) through the banking network straight to the payer's own app. The payer gets a notification, reviews the amount and the merchant's name, and approves with strong customer authentication — which triggers an instant SEPA credit transfer back to the payee.</p>
     <p>It is the open, account-to-account answer to "tap to approve": request, notify, authenticate, settle — in seconds, at European scale. Adopted by all EEA banks, SRTP would give every merchant and subscription business a native, card-free way to collect payments with a user experience equal to the best card wallets.</p>
+    <div class="epc-demo">
+      <div class="epc-fields">
+        <h3>Technical overview — the EPC scheme</h3>
+        <table class="epc-table">
+          <tr><td>Scheme rulebook</td><td>EPC SEPA Request-to-Pay (SRTP) Scheme Rulebook</td></tr>
+          <tr><td>Message standard</td><td>ISO 20022</td></tr>
+          <tr><td>Request message</td><td>pain.013 &mdash; payment activation request (payee &rarr; payer)</td></tr>
+          <tr><td>Status message</td><td>pain.014 &mdash; accept / reject status report (payer &rarr; payee)</td></tr>
+          <tr><td>Model</td><td>4-corner: payee &harr; payee's RTP provider &harr; payer's RTP provider &harr; payer</td></tr>
+          <tr><td>Transport</td><td>API-based exchange between RTP service providers (EPC API specifications)</td></tr>
+          <tr><td>Payer options</td><td>Accept now &middot; accept later &middot; reject; requests carry an expiry date/time</td></tr>
+          <tr><td>Funds movement</td><td>none &mdash; SRTP is messaging only; settlement follows as SCT / SCT Inst</td></tr>
+          <tr><td>Participants</td><td>PSPs and licensed non-PSP RTP service providers</td></tr>
+          <tr><td>Authentication</td><td>payer approves in their own app with SCA (PSD2 Art. 97)</td></tr>
+        </table>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -179,7 +196,7 @@ function landingHtml() {
 <script>
 (function () {
   if (typeof QRCode === 'undefined') return;
-  var payload = 'BCD\\n002\\n1\\nSCT\\n\\nAlexandru Negru\\nRO35REVO0000172343073545\\nEUR1.00\\n\\n\\nunique IBAN by smartIBAN';
+  var payload = 'BCD\\n002\\n1\\nSCT\\n\\nDemo A N\\nRO35REVO0000172343073545\\nEUR1.00\\n\\n\\nunique IBAN per trx';
   new QRCode(document.getElementById('epcqr'), {
     text: payload, width: 180, height: 180,
     correctLevel: QRCode.CorrectLevel.M,
