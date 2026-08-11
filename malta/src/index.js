@@ -467,7 +467,7 @@ function pageV2Html() {
         <a class="btn primary" href="https://bank.instasepa.eu/#sepa">Try the live demo</a>
         <a class="btn ghost" href="#proposal">Read the proposal</a>
       </div>
-      <p class="status">Discussion draft for consultation &middot; prepared for the Malta Financial Services Authority and the Central Bank of Malta &middot; contributed by smartIBAN, a Malta-based market participant, as a member of an open working group.</p>
+      <p class="status">Discussion draft for consultation &middot; prepared for the Malta Financial Services Authority and the Central Bank of Malta &middot; contributed by smartIBAN, a Malta-license applicant, as a member of an open working group.</p>
     </div>
     <div class="hero-mark">
       <img src="/mark.png" width="320" height="179" alt="instaSEPA mark" />
@@ -505,7 +505,7 @@ function pageV2Html() {
       <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22</span></h3><p>Encodes beneficiary, IBAN, amount and reference at the till or checkout. The customer's own bank app scans it and pre-fills the transfer. EPC069-12 covers invoice and bill payments.</p></div>
       <div class="card"><h3>SEPA Request-to-Pay <span class="tag">&middot; EPC014-20 v4.0</span></h3><p>The target state for request messaging. The payee sends a structured request, and the payer approves it in their own bank app.</p></div>
       <div class="card"><h3>Verification of Payee <span class="tag">&middot; mandatory since Oct 2025</span></h3><p>Confirms that the payee name matches the IBAN before the payer approves. This check is the primary fraud control.</p></div>
-      <div class="card"><h3>Proximity <span class="tag">&middot; merchant-side NFC</span></h3><p>The merchant side emits a short-lived claim-token URL over NFC, from an Android HCE app or a passive sticker. Tap-to-read works on iPhone (XS and later) and Android. The QR code is the universal fallback.</p></div>
+      <div class="card"><h3>Proximity <span class="tag">&middot; NFC tap</span></h3><p>The buyer's banking app emits a unique IBAN over NFC at the till, through host-card emulation. The QR code is the universal fallback.</p></div>
       <div class="card"><h3>Virtual IBANs <span class="tag">&middot; acquiring side</span></h3><p>Merchant collection IBANs with a virtual-IBAN layer, in house or via a PSP, for per-terminal and per-checkout reconciliation.</p></div>
     </div>
     <p>The design does not require a new scheme rulebook, a new clearing house, a proprietary wallet, exclusive rights for any single fintech, or coordinated pricing.</p>
@@ -547,7 +547,7 @@ function pageV2Html() {
       <li>The issuing bank sends an SCT Inst transfer to the acquirer. The acquirer credits the merchant and confirms to the till.</li>
     </ol>
     <p><b>Day one runs on the EPC QR code,</b> which triggers an SCT Inst transfer through PSD2 payment initiation. SRTP participation across the EU is still thin: the ECB's status updates record a small number of homologated participants. Malta adopts SRTP as issuers and acquirers complete certification. This is the strongest part of the Malta case. A small market can bootstrap the supply side that larger markets wait for.</p>
-    <p><b>The tap works on iPhone.</b> Apple permits third-party NFC card emulation in the EEA only through a gated entitlement (iOS 17.4 and later). The diagram and the Android demo show the buyer's phone as the emitter, which needs that entitlement on iPhone. The reference design for the national rollout inverts the direction: the merchant side broadcasts a short-lived claim-token URL, from an Android HCE app or a passive NFC sticker, and the customer taps to read. That works on iPhone (XS and later) and on Android, with no entitlement and no card emulation on the customer's device. The design does not depend on Apple to open anything further.</p>
+    <p><b>The buyer's phone is the emitter.</b> The banking app transmits a unique IBAN over NFC, as the diagram and the Android demo show. On Android this uses standard host-card emulation. On iPhone, Apple opened third-party NFC card emulation in the EEA through a gated entitlement (iOS 17.4 and later), available to authorised payment providers. The QR code is the universal fallback wherever NFC is not available.</p>
     <p><b>The pilot measures the timing.</b> SCT Inst settles in seconds, with a scheme maximum of 10 seconds. The pilot publishes the measured time-to-pay.</p>
   </div>
 </section>
@@ -621,7 +621,7 @@ function pageV2Html() {
       </div>
       <div class="card">
         <h3>Android tap demo</h3>
-        <p>The merchant-side tap flow on a real phone. Install it on any Android phone.</p>
+        <p>The buyer phone transmits a unique IBAN over NFC, as in the diagram above. Install it on any Android phone.</p>
         <a class="btn ghost" href="https://bank.instasepa.eu/app.apk">Download the APK</a>
       </div>
       <div class="card">
@@ -649,7 +649,7 @@ function pageV2Html() {
 
 <footer>
   <div class="wrap">
-    <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-based market participant and PI licence applicant, on behalf of an open working group. It does not represent the position of the MFSA or the Central Bank of Malta. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
+    <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-based market participant and Malta-license applicant, on behalf of an open working group. It does not represent the position of the MFSA or the Central Bank of Malta. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
     <div class="foot">
       <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
       <div class="small">Discussion draft &middot; 2026 &middot; <a href="https://instasepa.eu">instasepa.eu</a> &middot; Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a></div>
@@ -715,7 +715,10 @@ export default {
       });
     }
     if (p === '/v2/') {
-      return Response.redirect(url.origin + '/v2', 301);
+      return new Response(null, {
+        status: 301,
+        headers: { location: url.origin + '/v2', 'cache-control': 'public, max-age=300' },
+      });
     }
     if (p === '/v2') {
       return new Response(PAGE_V2, {
@@ -727,7 +730,10 @@ export default {
       });
     }
     if (p !== '/') {
-      return Response.redirect(url.origin + '/', 301);
+      return new Response(null, {
+        status: 302,
+        headers: { location: url.origin + '/', 'cache-control': 'no-store' },
+      });
     }
     return new Response(PAGE, {
       headers: {
