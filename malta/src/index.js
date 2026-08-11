@@ -11,9 +11,10 @@ import MARK_PNG_B64 from './mark.js';
 // SVG building blocks
 // ---------------------------------------------------------------------------
 
-// The instaSEPA mark itself is a PNG (Alex's navy artwork, rebuilt by
-// scripts/gen-assets.mjs and embedded via src/mark.js). Served at /mark.png.
-const LOGO_NAVY = '#16235F';
+// The instaSEPA mark is Alex's original PNG (instaSEPA-logo-dark.png,
+// embedded byte for byte via src/mark.js by scripts/gen-assets.mjs).
+// Served at /mark.png. Background color of the artwork: #081A54.
+const LOGO_NAVY = '#081A54';
 const LOGO_GOLD = '#FFC400';
 
 // Diagram 1: funds flow and revenue split.
@@ -206,9 +207,9 @@ function pageHtml() {
   .callout b { color: var(--blue-deep); }
   .sticker-wrap { display: flex; justify-content: center; margin: 26px 0 10px; }
   .sticker-card {
-    background: #16235F; border-radius: 24px; padding: 30px 34px 28px;
+    background: #081A54; border-radius: 24px; padding: 30px 34px 28px;
     max-width: 440px; text-align: center;
-    box-shadow: 0 8px 22px rgba(22, 35, 95, 0.28);
+    box-shadow: 0 8px 22px rgba(8, 26, 84, 0.30);
   }
   .sticker-card img { max-width: 100%; height: auto; }
   .sticker-card .acc { color: #FFFFFF; font-weight: 800; font-size: 26px; margin-top: 14px; }
@@ -260,7 +261,7 @@ function pageHtml() {
       </div>
     </div>
     <div class="hero-mark">
-      <img src="/mark.png" width="320" height="180" alt="instaSEPA mark" />
+      <img src="/mark.png" width="320" height="179" alt="instaSEPA mark" />
       <div class="cap">The proposed mark: the SEPA identity with <i>insta</i> on top of it.</div>
     </div>
   </div>
@@ -333,7 +334,7 @@ function pageHtml() {
     <p>Customers must see one sign and know that they can pay. The mark places <i>insta</i> in front of the SEPA identity that Europeans already know. All participants display the same mark.</p>
     <div class="sticker-wrap">
       <div class="sticker-card">
-        <img src="/mark.png" width="340" height="191" alt="instaSEPA mark" />
+        <img src="/mark.png" width="340" height="190" alt="instaSEPA mark" />
         <div class="acc">Accepted here</div>
         <div class="tag">Tap &amp; Pay with your banking app.</div>
       </div>
