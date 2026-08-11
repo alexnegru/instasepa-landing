@@ -1,0 +1,10 @@
+name = "instasepa-malta"
+main = "src/index.js"
+compatibility_date = "2024-10-01"
+account_id = "eef8d238bbf712c0681929822f7bf9bf"
+
+workers_dev = true
+
+routes = [
+  { pattern = "malta.instasepa.eu", custom_domain = true },
+]
