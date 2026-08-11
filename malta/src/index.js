@@ -5,52 +5,16 @@
 // Static page, no inline JS. Copy follows ASD-STE100 style (Alex's rule).
 
 import OG_PNG_B64 from './og.js';
+import MARK_PNG_B64 from './mark.js';
 
 // ---------------------------------------------------------------------------
 // SVG building blocks
 // ---------------------------------------------------------------------------
 
-// The instaSEPA wordmark (Alex's artwork, 2026-08-11): outlined gold "insta"
-// with two-color contactless arcs, above the SEPA logotype with the euro sign
-// as the E. Drawn with text + tspans so browsers kern it natively.
-const LOGO_BLUE = '#10298E';
+// The instaSEPA mark itself is a PNG (Alex's navy artwork, rebuilt by
+// scripts/gen-assets.mjs and embedded via src/mark.js). Served at /mark.png.
+const LOGO_NAVY = '#16235F';
 const LOGO_GOLD = '#FFC400';
-
-// Contactless arcs, alternating blue/gold from the smallest out.
-function logoArcs(cx, cy, sw, radii) {
-  const parts = radii.map(function (r, i) {
-    const dx = +(r * Math.SQRT1_2).toFixed(2);
-    return '<path d="M ' + (cx + dx) + ' ' + (cy - dx) +
-      ' A ' + r + ' ' + r + ' 0 0 1 ' + (cx + dx) + ' ' + (cy + dx) + '"' +
-      ' fill="none" stroke="' + (i % 2 === 0 ? LOGO_BLUE : LOGO_GOLD) + '"' +
-      ' stroke-width="' + sw + '" stroke-linecap="round"/>';
-  });
-  return parts.join('');
-}
-
-const wordmarkInner =
-  '<text x="16" y="92" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="78" fill="' + LOGO_GOLD + '" stroke="' + LOGO_BLUE + '" stroke-width="5" stroke-linejoin="round" paint-order="stroke" letter-spacing="2">insta</text>' +
-  logoArcs(268, 56, 11, [12, 24, 36, 48]) +
-  '<text x="8" y="286" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="172" fill="' + LOGO_BLUE + '">' +
-  '<tspan>S</tspan>' +
-  '<tspan font-size="196" dy="10" fill="' + LOGO_GOLD + '" stroke="' + LOGO_BLUE + '" stroke-width="6" stroke-linejoin="round" paint-order="stroke">&#8364;</tspan>' +
-  '<tspan dy="-10">PA</tspan>' +
-  '</text>';
-
-export { wordmarkInner };
-
-function wordmarkSvg(width) {
-  return '<svg width="' + width + '" viewBox="0 0 620 310" overflow="visible" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="instaSEPA mark">' +
-    wordmarkInner + '</svg>';
-}
-
-// Shop-door acceptance sticker.
-const stickerSvg = '<svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sticker: instaSEPA accepted here. Tap and Pay with your banking app." class="sticker">' +
-  '<rect x="8" y="8" width="444" height="284" rx="24" fill="#FFFFFF" stroke="#10298E" stroke-width="3"/>' +
-  '<svg x="95" y="28" width="270" height="135" viewBox="0 0 620 310">' + wordmarkInner + '</svg>' +
-  '<text x="230" y="212" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="27" fill="#1C2233" text-anchor="middle">Accepted here</text>' +
-  '<text x="230" y="246" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#58627A" text-anchor="middle">Tap &amp; Pay with your banking app.</text>' +
-  '</svg>';
 
 // Diagram 1: funds flow and revenue split.
 const fundsFlowSvg = '<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Funds flow: the buyer pays 100 euro by SCT Inst to the acquiring virtual IBAN. The merchant receives 99 euro. The 1 euro fee splits between the issuing bank and the acquiring bank." font-family="Arial, Helvetica, sans-serif">' +
@@ -211,7 +175,7 @@ function pageHtml() {
   .btn.primary { background: var(--blue); color: #FFFFFF; }
   .btn.ghost { border: 2px solid var(--blue); color: var(--blue); }
   .hero-mark { text-align: center; }
-  .hero-mark svg { max-width: 100%; height: auto; }
+  .hero-mark img { max-width: 100%; height: auto; border-radius: 14px; }
   .hero-mark .cap { font-size: 13px; color: var(--muted); margin-top: 10px; }
   section { padding: 40px 0; border-top: 1px solid var(--line); }
   h2 { font-size: clamp(23px, 3.4vw, 30px); color: var(--blue-deep); margin-bottom: 18px; }
@@ -241,7 +205,14 @@ function pageHtml() {
   }
   .callout b { color: var(--blue-deep); }
   .sticker-wrap { display: flex; justify-content: center; margin: 26px 0 10px; }
-  svg.sticker { width: min(460px, 100%); height: auto; filter: drop-shadow(0 8px 22px rgba(16, 41, 142, 0.18)); }
+  .sticker-card {
+    background: #16235F; border-radius: 24px; padding: 30px 34px 28px;
+    max-width: 440px; text-align: center;
+    box-shadow: 0 8px 22px rgba(22, 35, 95, 0.28);
+  }
+  .sticker-card img { max-width: 100%; height: auto; }
+  .sticker-card .acc { color: #FFFFFF; font-weight: 800; font-size: 26px; margin-top: 14px; }
+  .sticker-card .tag { color: #C9CED8; font-size: 16px; margin-top: 6px; }
   .demo-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 12px; }
   .demo-cards .card a.btn { margin-top: 14px; }
   .vslot {
@@ -289,7 +260,7 @@ function pageHtml() {
       </div>
     </div>
     <div class="hero-mark">
-      ${wordmarkSvg(280)}
+      <img src="/mark.png" width="320" height="180" alt="instaSEPA mark" />
       <div class="cap">The proposed mark: the SEPA identity with <i>insta</i> on top of it.</div>
     </div>
   </div>
@@ -360,7 +331,13 @@ function pageHtml() {
   <div class="wrap">
     <h2>One mark on every shop door</h2>
     <p>Customers must see one sign and know that they can pay. The mark places <i>insta</i> in front of the SEPA identity that Europeans already know. All participants display the same mark.</p>
-    <div class="sticker-wrap">${stickerSvg}</div>
+    <div class="sticker-wrap">
+      <div class="sticker-card">
+        <img src="/mark.png" width="340" height="191" alt="instaSEPA mark" />
+        <div class="acc">Accepted here</div>
+        <div class="tag">Tap &amp; Pay with your banking app.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -433,7 +410,7 @@ function pageHtml() {
 }
 
 const faviconSvg = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">' +
-  '<rect width="64" height="64" rx="12" fill="' + LOGO_BLUE + '"/>' +
+  '<rect width="64" height="64" rx="12" fill="' + LOGO_NAVY + '"/>' +
   '<text x="32" y="50" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="48" fill="' + LOGO_GOLD + '" text-anchor="middle">&#8364;</text>' +
   '</svg>';
 
@@ -442,13 +419,14 @@ const robotsTxt = 'User-agent: *\nAllow: /\n';
 // Static outputs, computed once per isolate.
 const PAGE = pageHtml();
 
-function ogPngBytes() {
-  const bin = atob(OG_PNG_B64);
+function b64Bytes(b64) {
+  const bin = atob(b64);
   const bytes = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
   return bytes;
 }
-const OG_PNG = ogPngBytes();
+const OG_PNG = b64Bytes(OG_PNG_B64);
+const MARK_PNG = b64Bytes(MARK_PNG_B64);
 
 const SECURITY_HEADERS = {
   'x-content-type-options': 'nosniff',
@@ -470,6 +448,11 @@ export default {
     }
     if (p === '/og.png') {
       return new Response(OG_PNG, {
+        headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' },
+      });
+    }
+    if (p === '/mark.png') {
+      return new Response(MARK_PNG, {
         headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' },
       });
     }
