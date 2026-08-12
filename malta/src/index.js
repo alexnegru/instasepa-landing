@@ -369,7 +369,7 @@ function pageHtml() {
     <p>A national payments capability must be safe, lawful and fair before it is fast.</p>
     <ul class="steps">
       <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers. Disputes have a clear route to the Office of the Arbiter for Financial Services.</li>
-      <li><b>Competition law.</b> The coordination asked of the MFSA and the CBM is technical interoperability and standards adoption only, never price. There is no shared interchange and no coordinated fee split.</li>
+      <li><b>Competition law.</b> The coordination asked of the MFSA and the CBM is technical interoperability and standards adoption only, never price. There is no imposed interchange pricing and no coordinated fee split. We introduce a SEPA Interchange scheme as a structure and not at pricing level.</li>
       <li><b>Data protection.</b> The design applies GDPR data minimisation and purpose limitation. Strong customer authentication and credentials remain with the customer's own bank. No third party holds them.</li>
     </ul>
   </div>
