@@ -132,13 +132,13 @@ const CSS = `
     border-bottom: 1px solid var(--line);
     background: #FFFFFF;
   }
-  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 0; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 22px; }
   .wordmark { font-size: 22px; color: var(--blue); text-decoration: none; }
   .wordmark .w1 { font-style: italic; font-weight: 400; }
   .wordmark .w2 { font-style: italic; font-weight: 800; }
   .topbar .where { font-size: 14px; color: var(--muted); text-align: right; }
   .topbar .where b { color: var(--blue-deep); }
-  .hero { padding: 56px 0 44px; }
+  .hero { padding: 56px 22px 44px; }
   .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 44px; align-items: center; }
   .eyebrow {
     font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
@@ -205,7 +205,8 @@ const CSS = `
   .foot .small { font-size: 13.5px; color: var(--muted); }
   .foot a { color: var(--blue); }
   @media (max-width: 760px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .hero { padding: 26px 22px 34px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 26px; }
     .cards, .std, .demo-cards { grid-template-columns: 1fr; }
     .topbar { flex-wrap: wrap; }
     .topbar .where { text-align: left; }
