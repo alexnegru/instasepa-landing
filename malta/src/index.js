@@ -233,7 +233,7 @@ function pageHtml() {
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Malta can run retail payments on SEPA &middot; instaSEPA Malta</title>
+<title>Malta can run POS retail payments on SEPA &middot; instaSEPA Malta</title>
 <meta name="description" content="A discussion paper for the MFSA and the Central Bank of Malta on coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta, settled by SEPA Instant." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://malta.instasepa.eu/" />
@@ -241,7 +241,7 @@ function pageHtml() {
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="instaSEPA" />
 <meta property="og:url" content="https://malta.instasepa.eu/" />
-<meta property="og:title" content="Malta can run retail payments on SEPA, and show Europe how" />
+<meta property="og:title" content="Malta can run POS retail payments on SEPA, and be an example for other EU member states" />
 <meta property="og:description" content="A discussion paper for the MFSA and the Central Bank of Malta on coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta." />
 <meta property="og:image" content="https://malta.instasepa.eu/og.png" />
 <meta property="og:image:width" content="1200" />
@@ -268,7 +268,7 @@ function pageHtml() {
   <div class="hero-grid">
     <div>
       <div class="eyebrow">Coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta</div>
-      <h1>Malta can run retail payments on SEPA, and show Europe how.</h1>
+      <h1>Malta can run POS retail payments on SEPA, and be an example for other EU member states.</h1>
       <p class="lead">Every euro-area citizen already has the rails to pay directly from a bank account. The market still needs coordination to use these rails at the till and the checkout. This paper proposes that Malta coordinate its banks, payment institutions and fintechs around standards Europe has already published: EPC QR codes and SEPA Request-to-Pay, settled by SEPA Instant Credit Transfer. Payments in Maltese shops and on Maltese websites can then run on SEPA instead of international card networks.</p>
       <p class="status">Discussion draft for consultation &middot; prepared for the Malta Financial Services Authority and the Central Bank of Malta &middot; contributed by smartIBAN, a Malta-license applicant, as a member of an open working group.</p>
     </div>
@@ -281,9 +281,9 @@ function pageHtml() {
 
 <section id="proposal">
   <div class="wrap">
-    <h2>The proposal in one paragraph</h2>
-    <p>Malta can be the example where every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds flow only from one SEPA IBAN to another SEPA IBAN at different banks.</p>
-    <p>The EU has mandated instant payments and <a href="https://eur-lex.europa.eu/eli/reg/2024/886/oj/eng" target="_blank" rel="noopener">published</a> the standards to initiate them at the point of sale. For our context, the size of the ecosystem in Malta, small but connected, brings the opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a reference implementation other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
+    <h2>Proposal summary</h2>
+    <p>Malta can be the example where every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds originate from one SEPA IBAN and are credited to another SEPA IBAN maintained at a different bank.</p>
+    <p>The EU has mandated instant payments and <a href="https://eur-lex.europa.eu/eli/reg/2024/886/oj/eng" target="_blank" rel="noopener">published</a> the standards to initiate them at the point of sale. For our context, the size of the ecosystem in Malta, small but connected, brings the opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a blueprint other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
     <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist, at island scale, where coordination is achievable.</p>
   </div>
 </section>
@@ -323,7 +323,7 @@ function pageHtml() {
       <div class="card"><h3>Citizens</h3><p>Pay from their own bank account, in the banking app they already have. No new wallet, no card number, no foreign network in the critical path. Approval uses their bank's own strong customer authentication, and the payee is verified before they approve.</p></div>
       <div class="card"><h3>Merchants</h3><p>Instant, final settlement to a SEPA IBAN. There is no batch clearing. One acceptance brand (instaSEPA or just SEPA) across physical retail and ecommerce.</p></div>
       <div class="card"><h3>Banks and PSPs</h3><p>The customer relationship and SCA stay in the IBAN issuer's own app. Each acquirer and PSP sets its own pricing. A new opportunity to monetise SEPA transactions at scale: a revenue-share scheme (SEPA Interchange), where the acquirer of the SEPA transaction shares the revenue with the payer's IBAN issuer.</p></div>
-      <div class="card"><h3>Malta</h3><p>Malta becomes the reference implementation for SEPA at the point of sale. The standards are European, so the result transfers to any other member state without change. A jurisdiction that proves this attracts payment companies that want to build on it. The EU now looks for a leader on payment sovereignty. A small country with a coordinated market can take this role.</p></div>
+      <div class="card"><h3>Malta</h3><p>Malta becomes the reference implementation for SEPA at the point of sale. A jurisdiction that proves this attracts payment companies that want to build on it. The EU now looks for an example on payment sovereignty and a small country with a coordinated market can take this role.</p></div>
     </div>
   </div>
 </section>
@@ -333,7 +333,7 @@ function pageHtml() {
     <h2>How the funds flow</h2>
     <p>The customer pays only the shop price. The merchant receives an instant credit to a SEPA IBAN. The diagram shows an illustrative commercial example.</p>
     <div class="diagram" tabindex="0" role="region" aria-label="Funds flow diagram">${fundsFlowSvg}</div>
-    <p>The fee level and the splits in the diagram are illustrations only. Each acquirer and PSP sets its own merchant pricing, bilaterally and competitively. There is no scheme-set interchange and no coordinated fee, and the working group's remit would explicitly exclude pricing, to stay clear of Article&nbsp;101 TFEU and Maltese competition rules.</p>
+    <p>The fee level and the splits in the diagram are illustrative only. Each acquirer and PSP sets its own merchant pricing, bilaterally and competitively. There is no scheme-set interchange and no coordinated fee, and the working group would explicitly exclude pricing, to stay clear of Article&nbsp;101 TFEU and Maltese competition rules.</p>
   </div>
 </section>
 
@@ -371,7 +371,7 @@ function pageHtml() {
     <h2>Consumer protection, competition and integrity</h2>
     <p>A national payments capability must be safe, lawful and fair before it is fast.</p>
     <ul class="steps">
-      <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers. Disputes have a clear route to the Office of the Arbiter for Financial Services.</li>
+      <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers.</li>
       <li><b>Competition law.</b> The coordination asked of the MFSA and the CBM is technical interoperability and standards adoption only, never price. There is no imposed interchange pricing and no coordinated fee split. We introduce a SEPA Interchange scheme as a structure and not at pricing level.</li>
       <li><b>Data protection.</b> The design applies GDPR data minimisation and purpose limitation. Strong customer authentication and credentials remain with the customer's own bank. No third party holds them.</li>
     </ul>
