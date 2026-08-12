@@ -145,7 +145,6 @@ const CSS = `
   }
   h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; color: var(--blue-deep); margin-bottom: 18px; }
   .hero p.lead { font-size: 18px; color: var(--muted); max-width: 34em; }
-  .cta { margin-top: 26px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
     display: inline-block; padding: 12px 22px; border-radius: 10px;
     font-weight: 700; font-size: 15.5px; text-decoration: none;
@@ -210,7 +209,6 @@ const CSS = `
     .topbar .where { text-align: left; }
   }
   @media print {
-    .cta { display: none; }
     .btn::after { content: " (" attr(href) ")"; font-weight: 400; font-size: 12px; }
     section { page-break-inside: avoid; }
   }
@@ -269,10 +267,6 @@ function pageHtml() {
       <div class="eyebrow">Coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta</div>
       <h1>Malta can run retail payments on SEPA, and show Europe how.</h1>
       <p class="lead">Every euro-area citizen already has the rails to pay directly from a bank account. The market still needs coordination to use these rails at the till and the checkout. This paper proposes that Malta coordinate its banks, payment institutions and fintechs around standards Europe has already published: EPC QR codes and SEPA Request-to-Pay, settled by SEPA Instant Credit Transfer. Payments in Maltese shops and on Maltese websites can then run on SEPA instead of international card networks.</p>
-      <div class="cta">
-        <a class="btn primary" href="https://bank.instasepa.eu/#sepa">Try the live demo</a>
-        <a class="btn ghost" href="#proposal">Read the proposal</a>
-      </div>
       <p class="status">Discussion draft for consultation &middot; prepared for the Malta Financial Services Authority and the Central Bank of Malta &middot; contributed by smartIBAN, a Malta-license applicant, as a member of an open working group.</p>
     </div>
     <div class="hero-mark">
