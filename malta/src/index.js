@@ -294,7 +294,7 @@ function pageHtml() {
     <ol class="steps">
       <li><b>Instant settlement is now mandatory infrastructure.</b> Under the Instant Payments Regulation (EU&nbsp;2024/886), euro-area PSPs must receive SEPA Instant Credit Transfers since 9 January 2025 and send them since 9 October 2025, and must offer Verification of Payee since 9 October 2025.</li>
       <li><b>The standards to trigger those payments at a till or checkout are published.</b> The EPC QR code for mobile-initiated SEPA (Instant) Credit Transfers (EPC024-22) and the SEPA Request-to-Pay scheme (rulebook v4.0, in force since 5 October 2025) are public.</li>
-      <li><b>The window to lead is open, and it will not stay open long.</b> Wero is live in Belgium, France and Germany, with point-of-sale NFC planned from H2&nbsp;2026. The EuroPA alliance and EPI signed an MoU in February 2026 to build pan-European interoperability for about 130 million users. Malta cannot out-scale those schemes. Malta can be first to ship an open, non-proprietary, standards-only implementation that other member states can replicate.</li>
+      <li><b>The window to lead is open, and it will not stay open long.</b> Wero is live in Belgium, France and Germany, with point-of-sale NFC planned from H2&nbsp;2026. The EuroPA alliance and EPI signed an MoU in February 2026 to build pan-European interoperability for about 130 million users. Malta can be first to ship an open, non-proprietary, standards-only implementation that other member states can replicate.</li>
     </ol>
   </div>
 </section>
