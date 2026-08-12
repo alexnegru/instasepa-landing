@@ -8,3 +8,13 @@ workers_dev = true
 routes = [
   { pattern = "malta.instasepa.eu", custom_domain = true },
 ]
+
+# Visitor analytics (same module as the demo workers): daily counters +
+# Telegram DM. Namespace title on Cloudflare: "MALTA".
+[[kv_namespaces]]
+binding = "STATE"
+id = "378b8bb9015740438ac2a030969927e5"
+
+# Secrets set via `wrangler secret put`:
+#   TELEGRAM_BOT_TOKEN   (same bot as the demo workers; analytics recipients
+#                         default to Alex's DM, override in KV key `analytics`)

@@ -6,6 +6,7 @@
 
 import OG_PNG_B64 from './og.js';
 import MARK_PNG_B64 from './mark.js';
+import { trackVisit } from './analytics.js';
 
 // ---------------------------------------------------------------------------
 // SVG building blocks
@@ -482,9 +483,13 @@ const SECURITY_HEADERS = {
 };
 
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
+    // Visitor analytics: the HTML page only, never assets or redirects.
+    if (p === '/' && ctx && env && env.STATE) {
+      ctx.waitUntil(trackVisit(request, env, p));
+    }
     if (p === '/favicon.svg') {
       return new Response(faviconSvg, {
         headers: { 'content-type': 'image/svg+xml', 'cache-control': 'public, max-age=86400' },
