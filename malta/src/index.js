@@ -216,205 +216,8 @@ const CSS = `
   }
 `;
 
-function pageHtml() {
-  return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>instaSEPA Malta &middot; instant SEPA payments at the point of sale</title>
-<meta name="description" content="A proposal to the MFSA and the Central Bank of Malta: instant SEPA payments in shops and online, built on the EPC QR code and SEPA Request-to-Pay." />
-<meta name="robots" content="index,follow" />
-<link rel="canonical" href="https://malta.instasepa.eu/" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="instaSEPA" />
-<meta property="og:url" content="https://malta.instasepa.eu/" />
-<meta property="og:title" content="instaSEPA Malta: instant SEPA payments at the point of sale" />
-<meta property="og:description" content="A proposal to the MFSA and the Central Bank of Malta: instant SEPA payments in shops and online, built on the EPC QR code and SEPA Request-to-Pay." />
-<meta property="og:image" content="https://malta.instasepa.eu/og.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"instaSEPA Malta","url":"https://malta.instasepa.eu/","inLanguage":"en","description":"A proposal to the MFSA and the Central Bank of Malta: instant SEPA payments in shops and online, built on the EPC QR code and SEPA Request-to-Pay."}
-</script>
-<style>${CSS}</style>
-</head>
-<body>
-
-<header class="top">
-  <div class="wrap topbar">
-    <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
-    <div class="where"><b>Malta</b> &middot; proposal to the MFSA and the Central Bank of Malta</div>
-  </div>
-</header>
-
-<main>
-
-<div class="wrap hero">
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow">An open proposal for Malta</div>
-      <h1>Pay in any shop in Malta, straight from your bank account.</h1>
-      <p class="lead">Malta can bring instant SEPA payments to the shop counter with standards that already exist. A customer taps a phone, and the merchant has the money in seconds. The payment moves directly from one Maltese bank account to another.</p>
-      <div class="cta">
-        <a class="btn primary" href="https://bank.instasepa.eu/#sepa">Try the live demo</a>
-        <a class="btn ghost" href="#proposal">Read the proposal</a>
-      </div>
-    </div>
-    <div class="hero-mark">
-      <img src="/mark.png" width="320" height="179" alt="instaSEPA mark" />
-      <div class="cap">The proposed mark: the SEPA identity with <i>insta</i> on top of it.</div>
-    </div>
-  </div>
-</div>
-
-<section id="proposal">
-  <div class="wrap">
-    <h2>The proposal</h2>
-    <p>Every retail bank in Malta operates SEPA Instant today. The Instant Payments Regulation (EU&nbsp;2024/886) made that mandatory in 2025. The European Payments Council also publishes two standards that connect this rail to the point of sale: the EPC QR code and SEPA Request-to-Pay.</p>
-    <p>When the Maltese market adopts both standards, customers can pay every merchant from a bank account. This works in shops and online. The payment settles in seconds. The banks keep their existing systems and add two functions to their apps.</p>
-    <p>A small group of banks and payment institutions serves the whole Maltese market. They must agree on one adoption timeline.</p>
-  </div>
-</section>
-
-<section id="standards">
-  <div class="wrap">
-    <h2>Built on published standards</h2>
-    <p>instaSEPA is an open payment method. It uses four building blocks, and European bodies define all of them:</p>
-    <div class="std">
-      <div class="card"><h3>SCT Inst <span class="tag">&middot; the rail</span></h3><p>The instant SEPA credit transfer. Every Maltese retail bank supports it today.</p></div>
-      <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22 (MSCT)</span></h3><p>One QR standard for merchant-presented payments, at the till and in webshops.</p></div>
-      <div class="card"><h3>SEPA Request-to-Pay <span class="tag">&middot; EPC014-20</span></h3><p>The merchant requests the payment. The customer approves it inside the banking app.</p></div>
-      <div class="card"><h3>Virtual IBANs <span class="tag">&middot; acquiring side</span></h3><p>The acquirer assigns them to merchants and transactions. Routing and reconciliation become automatic.</p></div>
-    </div>
-    <p>Any licensed bank or payment institution can take part. instaSEPA is the shared retail brand for the method, like the SEPA mark. The participants own the brand together.</p>
-  </div>
-</section>
-
-<section id="gains">
-  <div class="wrap">
-    <h2>Who gains what</h2>
-    <div class="cards">
-      <div class="card"><h3>Citizens</h3><p>Tap your phone at the till. Your banking app opens and shows the amount and the shop name. Approve the payment the way you approve any transfer. The merchant has the money in seconds. You pay with the banking app you already have.</p></div>
-      <div class="card"><h3>Merchants</h3><p>The money arrives in seconds, and the payment is final. SEPA credit transfers have no chargebacks. The all-in cost is about 1% per payment. Compare that with the fees you pay now to accept cards.</p></div>
-      <div class="card"><h3>Banks</h3><p>Acquiring becomes a new business line for the merchants you already serve. The issuing side earns a share of the fee for every payment that starts in your app. Card acquiring can continue in parallel.</p></div>
-      <div class="card"><h3>Fintechs and PSPs</h3><p>Acquiring banks need virtual IBAN management, and PSPs can supply it as a service. PSPs can also onboard merchants and connect till systems and webshops. This creates new licensed business on infrastructure that already operates.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="money">
-  <div class="wrap">
-    <h2>Where the money goes</h2>
-    <p>The customer pays only the shop price. The merchant receives 99% within seconds. The remaining 1% pays the institutions that operate the payment. The diagram shows two example splits.</p>
-    <div class="diagram" tabindex="0" role="region" aria-label="Funds flow diagram">${fundsFlowSvg}</div>
-    <p>The split gives every institution in the chain a commercial reason to take part. Card interchange plays that role today. This model is transparent, and the full fee stays with the banks and PSPs that do the work.</p>
-  </div>
-</section>
-
-<section id="tap">
-  <div class="wrap">
-    <h2>What happens on a tap</h2>
-    <p>The chain uses standard messages from end to end.</p>
-    <div class="diagram" tabindex="0" role="region" aria-label="Message sequence diagram">${seqSvg()}</div>
-    <ol class="steps">
-      <li>The buyer holds the phone against the till. The banking app transmits a unique IBAN over NFC. A QR code carries the same data when NFC is not available.</li>
-      <li>The till sends a Request-to-Pay to that unique IBAN. The request contains the amount and the merchant name.</li>
-      <li>The issuing bank maps the unique IBAN to the buyer's real account and shows the request in the banking app.</li>
-      <li>The buyer approves with strong customer authentication (SCA).</li>
-      <li>The issuing bank sends an SCT Inst transfer to the acquirer. The acquirer credits the merchant and confirms to the till.</li>
-    </ol>
-    <p>The demo completes this chain in under 5 seconds. The SCT Inst scheme caps the transfer leg at 10 seconds. The unique IBAN also protects the buyer. Each tap transmits a different IBAN, and the merchant never sees the real account number.</p>
-    <p>The banking apps need two additions: EPC QR scanning and SRTP handling. A bank joins the SRTP scheme and keeps its settlement systems unchanged.</p>
-  </div>
-</section>
-
-<section id="mark">
-  <div class="wrap">
-    <h2>One mark on every shop door</h2>
-    <p>Customers must see one sign and know that they can pay. The mark places <i>insta</i> in front of the SEPA identity that Europeans already know. All participants display the same mark.</p>
-    <div class="sticker-wrap">
-      <div class="sticker-card">
-        <img src="/mark.png" width="340" height="190" alt="instaSEPA mark" />
-        <div class="acc">Accepted here</div>
-        <div class="tag">Tap &amp; Pay with your banking app.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="wrap">
-    <h2>Why Malta is ready now</h2>
-    <p>Malta has a short list of retail banks. One national authority licenses all of them, together with the payment institutions. Malta can bring every relevant institution into one room.</p>
-    <p>The payment infrastructure is ready. Since October 2025 the Instant Payments Regulation requires every euro-area bank to send and to receive instant transfers. The banks have already paid for this capability. The point of sale can turn that investment into revenue. This opportunity is still open.</p>
-    <p>Europe depends on two non-EU card schemes for most card payments. The Commission and the ECB have this problem on their agenda. A member state that runs daily payments on open EPC standards gives the EU its first working example.</p>
-  </div>
-</section>
-
-<section id="wins">
-  <div class="wrap">
-    <h2>What Malta gains</h2>
-    <p>Malta becomes the reference implementation for SEPA at the point of sale. The standards are European, so the result transfers to any other member state without change. A jurisdiction that proves this attracts payment companies that want to build on it.</p>
-    <p>The credit goes to the institutions that bring the market together: the MFSA and the Central Bank of Malta. The timing works in their favour. The EU now looks for a leader on payment sovereignty. A small country with a coordinated market can take this role.</p>
-  </div>
-</section>
-
-<section id="plan">
-  <div class="wrap">
-    <h2>What has to happen</h2>
-    <ol class="steps">
-      <li>Banks and payment institutions in Malta add EPC QR scanning and SRTP handling to their existing apps.</li>
-      <li>Acquiring banks add virtual IBAN management. They can build it or buy it from a PSP.</li>
-      <li>The market agrees on one adoption timeline. The regulator calls the institutions together.</li>
-    </ol>
-    <div class="callout"><b>The first step</b> is a pilot in the MFSA FinTech Regulatory Sandbox. A small group of banks and PSPs, together with a defined set of merchants, tests the full payment chain in Malta.</div>
-  </div>
-</section>
-
-<section id="demo">
-  <div class="wrap">
-    <h2>See it work today</h2>
-    <div class="demo-cards">
-      <div class="card">
-        <h3>Live checkout demo</h3>
-        <p>A web checkout with a real EPC QR code and a live instant SEPA flow.</p>
-        <a class="btn primary" href="https://bank.instasepa.eu/#sepa">Open the demo</a>
-      </div>
-      <div class="card">
-        <h3>Android tap demo</h3>
-        <p>The buyer phone transmits a unique IBAN over NFC, as in the diagram above. Install it on any Android phone.</p>
-        <a class="btn ghost" href="https://bank.instasepa.eu/app.apk">Download the APK</a>
-      </div>
-      <div class="card">
-        <h3>NFC tap video</h3>
-        <p>A short video shows the tap on a real phone. It will appear here soon.</p>
-        <div class="vslot">
-          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#DCE3F2" stroke-width="2.5"/><path d="M18 14 L32 22 L18 30 z" fill="#DCE3F2"/></svg>
-          <span>Video coming soon</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
-    <div class="small">An open proposal for Malta &middot; 2026 &middot; <a href="https://instasepa.eu">instasepa.eu</a> &middot; Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a></div>
-  </div>
-</footer>
-
-</body>
-</html>`;
-}
-
 // ---------------------------------------------------------------------------
-// Page v2 — the discussion paper (content from Alex's Google Doc, 2026-08-11)
+// The page: the discussion paper (Alex's Google Doc, promoted to root 2026-08-12)
 // ---------------------------------------------------------------------------
 
 const V2_CSS = `
@@ -423,20 +226,20 @@ const V2_CSS = `
   .about { font-size: 13px; color: var(--muted); max-width: 60em; margin-bottom: 18px; }
 `;
 
-function pageV2Html() {
+function pageHtml() {
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Malta can run retail payments on SEPA &middot; instaSEPA discussion paper</title>
+<title>Malta can run retail payments on SEPA &middot; instaSEPA Malta</title>
 <meta name="description" content="A discussion paper for the MFSA and the Central Bank of Malta on coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta, settled by SEPA Instant." />
-<meta name="robots" content="noindex,follow" />
-<link rel="canonical" href="https://malta.instasepa.eu/v2" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://malta.instasepa.eu/" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="instaSEPA" />
-<meta property="og:url" content="https://malta.instasepa.eu/v2" />
+<meta property="og:url" content="https://malta.instasepa.eu/" />
 <meta property="og:title" content="Malta can run retail payments on SEPA, and show Europe how" />
 <meta property="og:description" content="A discussion paper for the MFSA and the Central Bank of Malta on coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta." />
 <meta property="og:image" content="https://malta.instasepa.eu/og.png" />
@@ -444,6 +247,9 @@ function pageV2Html() {
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="instaSEPA: Malta can run retail payments on SEPA" />
 <meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"instaSEPA Malta","url":"https://malta.instasepa.eu/","inLanguage":"en","description":"A discussion paper for the MFSA and the Central Bank of Malta on coordinated adoption of EPC QR and SEPA Request-to-Pay in Malta, settled by SEPA Instant."}
+</script>
 <style>${CSS}${V2_CSS}</style>
 </head>
 <body>
@@ -451,7 +257,7 @@ function pageV2Html() {
 <header class="top">
   <div class="wrap topbar">
     <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
-    <div class="where"><b>Malta</b> &middot; discussion draft v0.9 &middot; August 2026</div>
+    <div class="where"><b>Malta</b> &middot; discussion draft &middot; August 2026</div>
   </div>
 </header>
 
@@ -479,7 +285,8 @@ function pageV2Html() {
 <section id="proposal">
   <div class="wrap">
     <h2>The proposal in one paragraph</h2>
-    <p>Europe has mandated instant payments and published the standards to initiate them at the point of sale. Malta, a small and complete banking market with a single regulatory community, is one of the few places in the EU where the industry can realistically be convened to adopt them together. We propose a national, open, standards-based retail payments initiative: a working group, a technical specification, and a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a reference implementation other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
+    <p>Malta can be the example where every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds flow only from one SEPA IBAN to another SEPA IBAN at different banks.</p>
+    <p>Europe has mandated instant payments and published the standards to initiate them at the point of sale. Malta, a small and complete banking market with a single regulatory community, is one of the few places in the EU where the industry can realistically be convened to adopt them together. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a reference implementation other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
     <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist, at island scale, where coordination is achievable.</p>
   </div>
 </section>
@@ -489,9 +296,9 @@ function pageV2Html() {
     <h2>Why now</h2>
     <p>Three things changed in the last two years:</p>
     <ol class="steps">
-      <li><b>Instant settlement is now mandatory infrastructure.</b> Under the Instant Payments Regulation (EU&nbsp;2024/886), euro-area PSPs must receive SEPA Instant Credit Transfers since 9 January 2025 and send them since 9 October 2025, and must offer Verification of Payee since 9 October 2025. The settlement leg Malta would build on is already there.</li>
+      <li><b>Instant settlement is now mandatory infrastructure.</b> Under the Instant Payments Regulation (EU&nbsp;2024/886), euro-area PSPs must receive SEPA Instant Credit Transfers since 9 January 2025 and send them since 9 October 2025, and must offer Verification of Payee since 9 October 2025.</li>
       <li><b>The standards to trigger those payments at a till or checkout are published.</b> The EPC QR code for mobile-initiated SEPA (Instant) Credit Transfers (EPC024-22) and the SEPA Request-to-Pay scheme (rulebook v4.0, in force since 5 October 2025) are public.</li>
-      <li><b>The window to lead is open, and it will not stay open long.</b> Wero is live in Belgium, France and Germany, with point-of-sale NFC planned from H2&nbsp;2026. The EuroPA alliance and EPI signed an MoU in February 2026 to build pan-European interoperability for about 130 million users. Malta cannot out-scale those schemes. Malta can be first to ship an open, non-proprietary, standards-only implementation that other small member states can replicate.</li>
+      <li><b>The window to lead is open, and it will not stay open long.</b> Wero is live in Belgium, France and Germany, with point-of-sale NFC planned from H2&nbsp;2026. The EuroPA alliance and EPI signed an MoU in February 2026 to build pan-European interoperability for about 130 million users. Malta cannot out-scale those schemes. Malta can be first to ship an open, non-proprietary, standards-only implementation that other member states can replicate.</li>
     </ol>
   </div>
 </section>
@@ -502,10 +309,10 @@ function pageV2Html() {
     <p>An open payment experience built only on published European Payments Council work:</p>
     <div class="std">
       <div class="card"><h3>SCT Inst <span class="tag">&middot; settlement</span></h3><p>The instant SEPA credit transfer. Funds move IBAN to IBAN in seconds, with a scheme maximum of 10 seconds. No card authorisation network.</p></div>
-      <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22</span></h3><p>Encodes beneficiary, IBAN, amount and reference at the till or checkout. The customer's own bank app scans it and pre-fills the transfer. EPC069-12 covers invoice and bill payments.</p></div>
+      <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22</span></h3><p>Encodes beneficiary, IBAN and amount at the till or checkout. The customer's own bank app scans it and pre-fills the transfer. EPC069-12 covers invoice and bill payments.</p></div>
       <div class="card"><h3>SEPA Request-to-Pay <span class="tag">&middot; EPC014-20 v4.0</span></h3><p>The target state for request messaging. The payee sends a structured request, and the payer approves it in their own bank app.</p></div>
       <div class="card"><h3>Verification of Payee <span class="tag">&middot; mandatory since Oct 2025</span></h3><p>Confirms that the payee name matches the IBAN before the payer approves. This check is the primary fraud control.</p></div>
-      <div class="card"><h3>Proximity <span class="tag">&middot; NFC tap</span></h3><p>The buyer's banking app emits a unique IBAN over NFC at the till, through host-card emulation. The QR code is the universal fallback.</p></div>
+      <div class="card"><h3>Proximity <span class="tag">&middot; NFC tap</span></h3><p>The buyer's banking app emits a unique IBAN over NFC at the till, through host-card emulation. The QR code is the fallback.</p></div>
       <div class="card"><h3>Virtual IBANs <span class="tag">&middot; acquiring side</span></h3><p>Merchant collection IBANs with a virtual-IBAN layer, in house or via a PSP, for per-terminal and per-checkout reconciliation.</p></div>
     </div>
     <p>The design does not require a new scheme rulebook, a new clearing house, a proprietary wallet, exclusive rights for any single fintech, or coordinated pricing.</p>
@@ -516,12 +323,11 @@ function pageV2Html() {
   <div class="wrap">
     <h2>Who gains what</h2>
     <div class="cards">
-      <div class="card"><h3>Citizens</h3><p>Pay from your own bank account, in the banking app you already have. No new wallet, no card number, no foreign network in the critical path. Approval uses your bank's own strong customer authentication, and the payee is verified before you approve. Your money moves in seconds.</p></div>
-      <div class="card"><h3>Merchants</h3><p>Instant, final settlement to a SEPA IBAN. There is no batch clearing. One acceptance brand across physical retail and ecommerce. Each acquirer and PSP sets its own pricing; for many SMEs, competitive pricing with no chargeback overhead and instant settlement can beat the blended card cost. We propose to validate this against real Maltese acquiring statements during the pilot. We do not assert a figure.</p></div>
-      <div class="card"><h3>Banks and PSPs</h3><p>This is bank rails with a modern front-end. A new acquiring and value-added-services opportunity on SEPA Instant, complementary to card acquiring and over time a partial replacement for it. The customer relationship and SCA stay in the issuer's own app. App changes, Verification of Payee integration and fraud tooling carry a real cost, and the pilot measures both sides of that ledger.</p></div>
-      <div class="card"><h3>Payment institutions and EMIs</h3><p>The Instant Payments Regulation opens direct access to settlement systems (TIPS and RT1) for non-bank PSPs, with a deadline of 9 April 2027. This initiative gives Malta's large PI and EMI community a concrete new business line to showcase.</p></div>
+      <div class="card"><h3>Citizens</h3><p>Pay from their own bank account, in the banking app they already have. No new wallet, no card number, no foreign network in the critical path. Approval uses their bank's own strong customer authentication, and the payee is verified before they approve.</p></div>
+      <div class="card"><h3>Merchants</h3><p>Instant, final settlement to a SEPA IBAN. There is no batch clearing. One acceptance brand (instaSEPA or just SEPA) across physical retail and ecommerce.</p></div>
+      <div class="card"><h3>Banks and PSPs</h3><p>The customer relationship and SCA stay in the IBAN issuer's own app. Each acquirer and PSP sets its own pricing. A new opportunity to monetise SEPA transactions at scale: a revenue-share scheme (SEPA Interchange), where the acquirer of the SEPA transaction shares the revenue with the payer's IBAN issuer.</p></div>
+      <div class="card"><h3>Malta</h3><p>Malta becomes the reference implementation for SEPA at the point of sale. The standards are European, so the result transfers to any other member state without change. A jurisdiction that proves this attracts payment companies that want to build on it. The EU now looks for a leader on payment sovereignty. A small country with a coordinated market can take this role.</p></div>
     </div>
-    <p class="after-grid"><b>No new consumer app is the goal.</b> Until every Maltese bank app ships QR scan and request approval, a lightweight fallback flow bridges the gap. The design intent is that citizens never need to install anything new.</p>
   </div>
 </section>
 
@@ -540,15 +346,12 @@ function pageV2Html() {
     <p>The diagram shows the target flow, with SEPA Request-to-Pay end to end.</p>
     <div class="diagram" tabindex="0" role="region" aria-label="Message sequence diagram">${seqSvg()}</div>
     <ol class="steps">
-      <li>The buyer holds the phone against the till. The banking app transmits a unique IBAN over NFC. A QR code carries the same data when NFC is not available.</li>
+      <li>The buyer holds the phone against the till. The banking app transmits a unique IBAN over NFC.</li>
       <li>The till sends a Request-to-Pay to that unique IBAN. The request contains the amount and the merchant name.</li>
       <li>The issuing bank maps the unique IBAN to the buyer's real account and shows the request in the banking app.</li>
       <li>The buyer approves with strong customer authentication (SCA).</li>
       <li>The issuing bank sends an SCT Inst transfer to the acquirer. The acquirer credits the merchant and confirms to the till.</li>
     </ol>
-    <p><b>Day one runs on the EPC QR code,</b> which triggers an SCT Inst transfer through PSD2 payment initiation. SRTP participation across the EU is still thin: the ECB's status updates record a small number of homologated participants. Malta adopts SRTP as issuers and acquirers complete certification. This is the strongest part of the Malta case. A small market can bootstrap the supply side that larger markets wait for.</p>
-    <p><b>The buyer's phone is the emitter.</b> The banking app transmits a unique IBAN over NFC, as the diagram and the Android demo show. On Android this uses standard host-card emulation. On iPhone, Apple opened third-party NFC card emulation in the EEA through a gated entitlement (iOS 17.4 and later), available to authorised payment providers. The QR code is the universal fallback wherever NFC is not available.</p>
-    <p><b>The pilot measures the timing.</b> SCT Inst settles in seconds, with a scheme maximum of 10 seconds. The pilot publishes the measured time-to-pay.</p>
   </div>
 </section>
 
@@ -569,13 +372,11 @@ function pageV2Html() {
 <section id="integrity">
   <div class="wrap">
     <h2>Consumer protection, competition and integrity</h2>
-    <p>A national payments capability must be safe, lawful and fair before it is fast. The paper puts the hard questions on the table.</p>
+    <p>A national payments capability must be safe, lawful and fair before it is fast.</p>
     <ul class="steps">
-      <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers. Disputes have a clear route to the Office of the Arbiter for Financial Services, and a plain-language consumer-rights note ships with the pilot.</li>
+      <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers. Disputes have a clear route to the Office of the Arbiter for Financial Services.</li>
       <li><b>Competition law.</b> The coordination asked of the MFSA and the CBM is technical interoperability and standards adoption only, never price. There is no shared interchange and no coordinated fee split.</li>
-      <li><b>AML, sanctions and fraud.</b> Instant, always-on, irrevocable payments need in-line controls: transaction monitoring, sanctions screening, Verification of Payee, and a clear fraud-liability allocation between PSPs, documented against the MFSA's Financial Crime Compliance Strategy.</li>
       <li><b>Data protection.</b> The design applies GDPR data minimisation and purpose limitation. Strong customer authentication and credentials remain with the customer's own bank. No third party holds them.</li>
-      <li><b>Accessibility and inclusion.</b> This is an additional rail, and cash and cards continue. QR and assisted-payment options are part of the specification, so the capability stays usable for non-smartphone users, the elderly and persons with disabilities.</li>
     </ul>
   </div>
 </section>
@@ -584,17 +385,17 @@ function pageV2Html() {
   <div class="wrap">
     <h2>What we propose to the MFSA and the Central Bank of Malta</h2>
     <div class="callout"><b>We ask the MFSA and the CBM</b> to put this topic on the programme of the <i>FinTech 2030: Shaping the Next Era of Financial Services</i> event on 22 September 2026, or to co-host a one-day technical roundtable with Malta's core domestic banks and the licensed PI and EMI community. The goal of that day is a term sheet for a feasibility study and a measured pilot in the MFSA FinTech Regulatory Sandbox.</div>
-    <p class="after-grid">The regulator's role is to convene and facilitate. The market builds and operates. No endorsement of any single vendor is implied or sought, and participation is open to every licensed player on equal, non-discriminatory terms.</p>
-    <p>A proposed path from there:</p>
+    <p class="after-grid">No endorsement of any single vendor is implied or sought, and participation is open to every licensed player on equal, non-discriminatory terms.</p>
+    <p>A proposed path:</p>
     <ol class="steps">
-      <li><b>Working group and term sheet.</b> The MFSA and the CBM convene; the market participates. Scope, governance and success metrics. About one month.</li>
-      <li><b>Technical specification,</b> industry-led: EPC QR (EPC024-22) initiation, Verification of Payee, SCT Inst settlement, the SRTP migration path, and the consumer-rights note. About two months.</li>
+      <li><b>Working group and term sheet.</b> The MFSA and the CBM convene; the market participates. Scope, governance and success metrics.</li>
+      <li><b>Technical specification,</b> industry-led: EPC QR (EPC024-22) initiation, Verification of Payee, SCT Inst settlement, the SRTP migration path, and the consumer-rights note.</li>
       <li><b>Issuer app support</b> in the banks: QR scan, request receipt with SCA approval, and app-to-app return.</li>
-      <li><b>Acquirer and PSP acceptance</b> at till and checkout, settled to SEPA IBANs, with virtual-IBAN reconciliation for clean per-terminal reporting. Pricing stays bilateral and competitive.</li>
+      <li><b>Acquirer and PSP acceptance</b> at till and checkout, settled to SEPA IBANs, with virtual-IBAN reconciliation for clean per-terminal reporting.</li>
       <li><b>A measured pilot</b> in the sandbox with selected retail and ecommerce merchants, measured on time-to-pay, authorisation success, consumer experience, and merchant cost versus cards.</li>
       <li><b>Publish the playbook:</b> an open reference implementation other member states can copy.</li>
     </ol>
-    <p><b>If only some banks join.</b> A minimum viable coalition of two core domestic banks plus the PI and EMI community is enough for a meaningful pilot. Customers of non-adopting banks can still pay with a standard SEPA Instant transfer to the same merchant IBAN. The capability degrades gracefully and excludes nobody.</p>
+    <p><b>If only some banks join.</b> A minimum viable coalition of two core domestic banks plus the PI and EMI community is enough for a meaningful pilot. Customers of non-adopting banks can still pay with a standard SEPA Instant transfer to the same merchant IBAN.</p>
   </div>
 </section>
 
@@ -649,7 +450,7 @@ function pageV2Html() {
 
 <footer>
   <div class="wrap">
-    <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-based market participant and Malta-license applicant, on behalf of an open working group. It does not represent the position of the MFSA or the Central Bank of Malta. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
+    <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-license applicant. It does not represent the position of the MFSA or the Central Bank of Malta. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
     <div class="foot">
       <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
       <div class="small">Discussion draft &middot; 2026 &middot; <a href="https://instasepa.eu">instasepa.eu</a> &middot; Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a></div>
@@ -670,7 +471,6 @@ const robotsTxt = 'User-agent: *\nAllow: /\n';
 
 // Static outputs, computed once per isolate.
 const PAGE = pageHtml();
-const PAGE_V2 = pageV2Html();
 
 function b64Bytes(b64) {
   const bin = atob(b64);
@@ -714,19 +514,10 @@ export default {
         headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=86400' },
       });
     }
-    if (p === '/v2/') {
+    if (p === '/v2' || p === '/v2/') {
       return new Response(null, {
         status: 301,
-        headers: { location: url.origin + '/v2', 'cache-control': 'public, max-age=300' },
-      });
-    }
-    if (p === '/v2') {
-      return new Response(PAGE_V2, {
-        headers: {
-          'content-type': 'text/html; charset=utf-8',
-          'cache-control': 'public, max-age=300',
-          ...SECURITY_HEADERS,
-        },
+        headers: { location: url.origin + '/', 'cache-control': 'public, max-age=300' },
       });
     }
     if (p !== '/') {
