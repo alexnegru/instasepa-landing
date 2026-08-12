@@ -158,6 +158,7 @@ const CSS = `
   section { padding: 40px 0; border-top: 1px solid var(--line); }
   h2 { font-size: clamp(23px, 3.4vw, 30px); color: var(--blue-deep); margin-bottom: 18px; }
   section p { margin-bottom: 14px; max-width: 46em; }
+  section p a { color: var(--blue); }
   section p:last-child { margin-bottom: 0; }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
   .card {
@@ -281,7 +282,7 @@ function pageHtml() {
   <div class="wrap">
     <h2>The proposal in one paragraph</h2>
     <p>Malta can be the example where every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds flow only from one SEPA IBAN to another SEPA IBAN at different banks.</p>
-    <p>Europe has mandated instant payments and published the standards to initiate them at the point of sale. Malta, a small and complete banking market with a single regulatory community, is one of the few places in the EU where the industry can realistically be convened to adopt them together. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a reference implementation other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
+    <p>The EU has mandated instant payments and <a href="https://eur-lex.europa.eu/eli/reg/2024/886/oj/eng" target="_blank" rel="noopener">published</a> the standards to initiate them at the point of sale. For our context, the size of the ecosystem in Malta, small but connected, brings the opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a reference implementation other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
     <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist, at island scale, where coordination is achievable.</p>
   </div>
 </section>
@@ -448,7 +449,7 @@ function pageHtml() {
     <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-license applicant. It does not represent the position of the MFSA or the Central Bank of Malta. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
     <div class="foot">
       <a class="wordmark" href="https://instasepa.eu"><span class="w1">insta</span><span class="w2">SEPA</span></a>
-      <div class="small">Discussion draft &middot; 2026 &middot; <a href="https://instasepa.eu">instasepa.eu</a> &middot; Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a></div>
+      <div class="small">Discussion draft &middot; 2026 &middot; <a href="https://instasepa.eu">instasepa.eu</a> &middot; Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alexandru Negru</a></div>
     </div>
   </div>
 </footer>
