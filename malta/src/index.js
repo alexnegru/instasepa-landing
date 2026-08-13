@@ -283,7 +283,7 @@ function pageHtml() {
   <div class="wrap">
     <h2>Proposal summary</h2>
     <p>Malta can be the example where every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds originate from one SEPA IBAN and are credited to another SEPA IBAN maintained at a different bank.</p>
-    <p>The EU has mandated instant payments and <a href="https://eur-lex.europa.eu/eli/reg/2024/886/oj/eng" target="_blank" rel="noopener">published</a> the standards to initiate them at the point of sale. For our context, the size of the ecosystem in Malta, small but connected, brings the opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a blueprint other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
+    <p>The EU has mandated instant payments and published the standards to initiate them at the point of sale. For our context, the size of the ecosystem in Malta, small but connected, brings the opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, coordinated by the MFSA and the Central Bank of Malta and built by the market. The result would be a blueprint other member states can copy, and a concrete Maltese contribution to the EU's payments strategic-autonomy agenda.</p>
     <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist, at island scale, where coordination is achievable.</p>
   </div>
 </section>
@@ -293,8 +293,8 @@ function pageHtml() {
     <h2>Why now</h2>
     <p>Three things changed in the last two years:</p>
     <ol class="steps">
-      <li><b>Instant settlement is now mandatory infrastructure.</b> Under the Instant Payments Regulation (EU&nbsp;2024/886), euro-area PSPs must receive SEPA Instant Credit Transfers since 9 January 2025 and send them since 9 October 2025, and must offer Verification of Payee since 9 October 2025.</li>
-      <li><b>The standards to trigger those payments at a till or checkout are published.</b> The EPC QR code for mobile-initiated SEPA (Instant) Credit Transfers (EPC024-22) and the SEPA Request-to-Pay scheme (rulebook v4.0, in force since 5 October 2025) are public.</li>
+      <li><b>Instant settlement is now mandatory infrastructure.</b> Under the Instant Payments Regulation, euro-area PSPs must receive SEPA Instant Credit Transfers and must offer Verification of Payee since 9 October 2025.</li>
+      <li><b>The standards to trigger those payments at a till or checkout are published.</b> The EPC QR code for mobile-initiated SEPA (Instant) Credit Transfers and the SEPA Request-to-Pay scheme are public.</li>
       <li><b>The window to lead is open, and it will not stay open long.</b> Wero is live in Belgium, France and Germany, with point-of-sale NFC planned from H2&nbsp;2026. The EuroPA alliance and EPI signed an MoU in February 2026 to build pan-European interoperability for about 130 million users. Malta can be first to ship an open, non-proprietary, standards-only implementation that other member states can replicate.</li>
     </ol>
   </div>
@@ -306,7 +306,7 @@ function pageHtml() {
     <p>An open payment experience built only on published European Payments Council work:</p>
     <div class="std">
       <div class="card"><h3>SCT Inst <span class="tag">&middot; settlement</span></h3><p>The instant SEPA credit transfer. Funds move IBAN to IBAN in seconds, with a scheme maximum of 10 seconds. No card authorisation network.</p></div>
-      <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22</span></h3><p>Encodes beneficiary, IBAN and amount at the till or checkout. The customer's own bank app scans it and pre-fills the transfer. EPC069-12 covers invoice and bill payments.</p></div>
+      <div class="card"><h3>EPC QR code <span class="tag">&middot; EPC024-22</span></h3><p>Encodes beneficiary, IBAN and amount at the till or checkout. The customer's own bank app scans it and pre-fills the transfer.</p></div>
       <div class="card"><h3>SEPA Request-to-Pay <span class="tag">&middot; EPC014-20 v4.0</span></h3><p>The target state for request messaging. The payee sends a structured request, and the payer approves it in their own bank app.</p></div>
       <div class="card"><h3>Verification of Payee <span class="tag">&middot; mandatory since Oct 2025</span></h3><p>Confirms that the payee name matches the IBAN before the payer approves. This check is the primary fraud control.</p></div>
       <div class="card"><h3>Proximity <span class="tag">&middot; NFC tap</span></h3><p>The buyer's banking app emits a unique IBAN over NFC at the till, through host-card emulation. The QR code is the fallback.</p></div>
@@ -333,7 +333,7 @@ function pageHtml() {
     <h2>How the funds flow</h2>
     <p>The customer pays only the shop price. The merchant receives an instant credit to a SEPA IBAN. The diagram shows an illustrative commercial example.</p>
     <div class="diagram" tabindex="0" role="region" aria-label="Funds flow diagram">${fundsFlowSvg}</div>
-    <p>The fee level and the splits in the diagram are illustrative only. Each acquirer and PSP sets its own merchant pricing, bilaterally and competitively. There is no scheme-set interchange and no coordinated fee, and the working group would explicitly exclude pricing, to stay clear of Article&nbsp;101 TFEU and Maltese competition rules.</p>
+    <p>The fee level and the splits in the diagram are illustrative only. Each acquirer and PSP sets its own merchant pricing, bilaterally and competitively. There is no scheme-set interchange and no coordinated fee, and the working group would explicitly exclude pricing, to stay clear of Maltese competition rules.</p>
   </div>
 </section>
 
@@ -381,12 +381,12 @@ function pageHtml() {
 <section id="propose">
   <div class="wrap">
     <h2>What we propose to the MFSA and the Central Bank of Malta</h2>
-    <div class="callout"><b>We ask the MFSA and the CBM</b> to put this topic on the programme of the <i>FinTech 2030: Shaping the Next Era of Financial Services</i> event on 22 September 2026, or to co-host a one-day technical roundtable with Malta's core domestic banks and the licensed PI and EMI community. The goal of that day is a term sheet for a feasibility study and a measured pilot in the MFSA FinTech Regulatory Sandbox.</div>
+    <div class="callout"><b>We ask the MFSA and the CBM</b> to co-host a one-day technical roundtable with Malta's core domestic banks and the licensed PI and EMI community. The goal of that day is a term sheet for a feasibility study and a measured pilot in the MFSA FinTech Regulatory Sandbox.</div>
     <p class="after-grid">No endorsement of any single vendor is implied or sought, and participation is open to every licensed player on equal, non-discriminatory terms.</p>
     <p>A proposed path:</p>
     <ol class="steps">
       <li><b>Working group and term sheet.</b> The MFSA and the CBM convene; the market participates. Scope, governance and success metrics.</li>
-      <li><b>Technical specification,</b> industry-led: EPC QR (EPC024-22) initiation, Verification of Payee, SCT Inst settlement, the SRTP migration path, and the consumer-rights note.</li>
+      <li><b>Technical specification,</b> industry-led: EPC QR initiation, Verification of Payee, SCT Inst settlement, the SRTP migration path, and the consumer-rights note.</li>
       <li><b>Issuer app support</b> in the banks: QR scan, request receipt with SCA approval, and app-to-app return.</li>
       <li><b>Acquirer and PSP acceptance</b> at till and checkout, settled to SEPA IBANs, with virtual-IBAN reconciliation for clean per-terminal reporting.</li>
       <li><b>A measured pilot</b> in the sandbox with selected retail and ecommerce merchants, measured on time-to-pay, authorisation success, consumer experience, and merchant cost versus cards.</li>
