@@ -381,7 +381,7 @@ function pageHtml() {
 <section id="propose">
   <div class="wrap">
     <h2>What we propose to the MFSA and the Central Bank of Malta</h2>
-    <div class="callout"><b>We ask the MFSA and the CBM</b> to co-host a one-day technical roundtable with Malta's core domestic banks and the licensed PI and EMI community. The goal of that day is a term sheet for a feasibility study and a measured pilot in the MFSA FinTech Regulatory Sandbox.</div>
+    <div class="callout"><b>We ask for a meeting</b> to discuss this topic and the opportunity of a one-day technical roundtable with Malta's core domestic banks and the licensed PI community, hosted by the MFSA. The goal of that day is a term sheet for a feasibility study and a measured pilot in the MFSA FinTech Regulatory Sandbox.</div>
     <p class="after-grid">No endorsement of any single vendor is implied or sought, and participation is open to every licensed player on equal, non-discriminatory terms.</p>
     <p>A proposed path:</p>
     <ol class="steps">
