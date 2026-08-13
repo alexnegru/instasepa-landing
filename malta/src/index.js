@@ -403,7 +403,7 @@ function pageHtml() {
       <li>A working, island-scale demonstration that a member state can deliver open, sovereign account-to-account retail payments in production.</li>
       <li>A concrete contribution to the EU's strategic-autonomy agenda on payments, aligned with the Eurosystem's and the Commission's retail payments strategies.</li>
       <li>A magnet for high-quality payment institutions and infrastructure builders, in line with the MFSA's FinTech Strategy objective: Malta as an international FinTech hub.</li>
-      <li>A story larger than national interest: Malta as the open reference node for SEPA retail payments, the interoperable complement to Wero and EuroPA, and the model other small member states can adopt.</li>
+      <li>A story larger than national interest: Malta as the open reference node for SEPA retail payments, the interoperable complement to Wero and EuroPA, and the model other member states can adopt.</li>
     </ul>
   </div>
 </section>
