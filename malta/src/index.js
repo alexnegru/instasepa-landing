@@ -234,6 +234,7 @@ const V2_CSS = `
     position: fixed; inset: 0; z-index: 50; background: rgba(8, 26, 84, 0.88);
     display: flex; align-items: center; justify-content: center; padding: 4vmin;
   }
+  .voverlay[hidden] { display: none; }
   .vbox { position: relative; width: min(1100px, 96vw); }
   .vframe { aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; }
   .vframe iframe { width: 100%; height: 100%; border: 0; display: block; }
