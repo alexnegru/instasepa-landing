@@ -194,12 +194,6 @@ const CSS = `
   .sticker-card .tag { color: #C9CED8; font-size: 16px; margin-top: 6px; }
   .demo-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 12px; }
   .demo-cards .card a.btn { margin-top: 14px; }
-  .vslot {
-    margin-top: 14px; aspect-ratio: 16 / 9; border: 2px dashed var(--line);
-    border-radius: 10px; background: #FFFFFF; color: var(--muted);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 8px; font-size: 13.5px;
-  }
   footer { border-top: 1px solid var(--line); padding: 26px 0 40px; }
   .foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
   .foot .small { font-size: 13.5px; color: var(--muted); }
@@ -225,6 +219,29 @@ const V2_CSS = `
   .status { font-size: 13.5px; color: var(--muted); margin-top: 18px; max-width: 36em; }
   .after-grid { margin-top: 15px; }
   .about { font-size: 13px; color: var(--muted); max-width: 60em; margin-bottom: 18px; }
+  .vthumb {
+    display: block; position: relative; width: 100%; margin-top: 14px;
+    aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden; cursor: pointer; padding: 0; background: #081A54;
+  }
+  .vthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vplay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(8, 26, 84, 0.25);
+  }
+  .vthumb:hover .vplay, .vthumb:focus-visible .vplay { background: rgba(8, 26, 84, 0.45); }
+  .voverlay {
+    position: fixed; inset: 0; z-index: 50; background: rgba(8, 26, 84, 0.88);
+    display: flex; align-items: center; justify-content: center; padding: 4vmin;
+  }
+  .vbox { position: relative; width: min(1100px, 96vw); }
+  .vframe { aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; }
+  .vframe iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .vclose {
+    position: absolute; top: -46px; right: 0; width: 38px; height: 38px;
+    border: 0; border-radius: 50%; background: #FFFFFF; color: #081A54;
+    font-size: 22px; font-weight: 700; line-height: 1; cursor: pointer;
+  }
 `;
 
 function pageHtml() {
@@ -424,11 +441,11 @@ function pageHtml() {
       </div>
       <div class="card">
         <h3>NFC tap video</h3>
-        <p>A short video shows the tap on a real phone. It will appear here soon.</p>
-        <div class="vslot">
-          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#DCE3F2" stroke-width="2.5"/><path d="M18 14 L32 22 L18 30 z" fill="#DCE3F2"/></svg>
-          <span>Video coming soon</span>
-        </div>
+        <p>A short video shows the tap on a real phone. It opens right here.</p>
+        <button class="vthumb" id="nfc-video-open" aria-label="Play the NFC tap video">
+          <img src="https://i.ytimg.com/vi/EpbdYG3nliY/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" />
+          <span class="vplay"><svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="29" cy="29" r="27" fill="#FFFFFF"/><path d="M23 18 L42 29 L23 40 z" fill="#081A54"/></svg></span>
+        </button>
       </div>
     </div>
     <p class="after-grid">A working reference experience exists and can be demonstrated live. The proposal is that Malta owns the national rollout under open standards.</p>
@@ -454,6 +471,44 @@ function pageHtml() {
     </div>
   </div>
 </footer>
+
+<div class="voverlay" id="nfc-video-overlay" hidden>
+  <div class="vbox">
+    <button class="vclose" id="nfc-video-close" aria-label="Close the video">&#215;</button>
+    <div class="vframe" id="nfc-video-frame"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay = document.getElementById('nfc-video-overlay');
+  var frame = document.getElementById('nfc-video-frame');
+  var SRC = 'https://www.youtube-nocookie.com/embed/EpbdYG3nliY?autoplay=1&vq=hd1080&rel=0&modestbranding=1';
+  function openVideo() {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    var f = document.createElement('iframe');
+    f.src = SRC;
+    f.title = 'NFC tap video';
+    f.allow = 'autoplay; fullscreen; encrypted-media; picture-in-picture';
+    f.allowFullscreen = true;
+    frame.appendChild(f);
+    document.getElementById('nfc-video-close').focus();
+  }
+  function closeVideo() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    frame.innerHTML = '';
+    document.getElementById('nfc-video-open').focus();
+  }
+  document.getElementById('nfc-video-open').addEventListener('click', openVideo);
+  document.getElementById('nfc-video-close').addEventListener('click', closeVideo);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeVideo(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.hidden) closeVideo();
+  });
+})();
+</script>
 
 </body>
 </html>`;
@@ -481,7 +536,7 @@ const MARK_PNG = b64Bytes(MARK_PNG_B64);
 const SECURITY_HEADERS = {
   'x-content-type-options': 'nosniff',
   'referrer-policy': 'strict-origin-when-cross-origin',
-  'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'none'",
+  'content-security-policy': "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'none'; base-uri 'none'",
 };
 
 export default {
