@@ -442,7 +442,7 @@ function pageHtml() {
       </div>
       <div class="card">
         <h3>NFC tap video</h3>
-        <p>A short video shows the tap on a real phone. It opens right here.</p>
+        <p>A <a href="https://www.youtube.com/watch?v=EpbdYG3nliY" target="_blank" rel="noopener">short video</a> shows the tap on a real phone. It opens right here.</p>
         <button class="vthumb" id="nfc-video-open" aria-label="Play the NFC tap video">
           <img src="https://i.ytimg.com/vi/EpbdYG3nliY/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" />
           <span class="vplay"><svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="29" cy="29" r="27" fill="#FFFFFF"/><path d="M23 18 L42 29 L23 40 z" fill="#081A54"/></svg></span>
