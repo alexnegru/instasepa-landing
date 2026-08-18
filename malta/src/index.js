@@ -432,17 +432,17 @@ function pageHtml() {
     <div class="demo-cards">
       <div class="card">
         <h3>Live checkout demo</h3>
-        <p>A web checkout with a real EPC QR code and a live instant SEPA flow.</p>
+        <p>A web checkout with a real EPC QR code simulation and a fake SRTP simulation using bunq NL IBANs for payers.</p>
         <a class="btn primary" href="https://bank.instasepa.eu/#sepa">Open the demo</a>
       </div>
       <div class="card">
         <h3>Android tap demo</h3>
-        <p>The buyer phone transmits a unique IBAN over NFC, as in the diagram above. Install it on any Android phone.</p>
+        <p>An Android APK that helps simulate the SRTP POC. The supermarket can accept an IBAN via NFC to send the SRTP to.</p>
         <a class="btn ghost" href="https://bank.instasepa.eu/app.apk">Download the APK</a>
       </div>
       <div class="card">
         <h3>NFC tap video</h3>
-        <p>A <a href="https://www.youtube.com/watch?v=EpbdYG3nliY" target="_blank" rel="noopener">short video</a> shows the tap on a real phone. It opens right here.</p>
+        <p>A <a href="https://www.youtube.com/watch?v=EpbdYG3nliY" target="_blank" rel="noopener">short video</a> shows a simulated SRTP POC where an NL buyer pays for bananas via NFC in a supermarket.</p>
         <button class="vthumb" id="nfc-video-open" aria-label="Play the NFC tap video">
           <img src="https://i.ytimg.com/vi/EpbdYG3nliY/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" />
           <span class="vplay"><svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="29" cy="29" r="27" fill="#FFFFFF"/><path d="M23 18 L42 29 L23 40 z" fill="#081A54"/></svg></span>
