@@ -6,7 +6,7 @@
 
 import OG_PNG_B64 from './og.js';
 import MARK_PNG_B64 from './mark.js';
-import { trackVisit } from './analytics.js';
+import { handleBeacon, withBeacon } from './analytics.js';
 
 // ---------------------------------------------------------------------------
 // SVG building blocks
@@ -537,17 +537,18 @@ const MARK_PNG = b64Bytes(MARK_PNG_B64);
 const SECURITY_HEADERS = {
   'x-content-type-options': 'nosniff',
   'referrer-policy': 'strict-origin-when-cross-origin',
-  'content-security-policy': "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'none'; base-uri 'none'",
+  'content-security-policy': "default-src 'none'; connect-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'none'; base-uri 'none'",
 };
+
+// Visitor analytics: counted on the page's beacon, never on the request
+// itself, so clients that do not run JavaScript never reach the feed.
+const PAGE_HTML = withBeacon(PAGE);
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
-    // Visitor analytics: the HTML page only, never assets or redirects.
-    if (p === '/' && ctx && env && env.STATE) {
-      ctx.waitUntil(trackVisit(request, env, p));
-    }
+    if (p === '/api/v') return handleBeacon(request, env, ctx);
     if (p === '/favicon.svg') {
       return new Response(faviconSvg, {
         headers: { 'content-type': 'image/svg+xml', 'cache-control': 'public, max-age=86400' },
@@ -583,7 +584,7 @@ export default {
         headers: { location: url.origin + '/', 'cache-control': 'no-store' },
       });
     }
-    return new Response(PAGE, {
+    return new Response(PAGE_HTML, {
       headers: {
         'content-type': 'text/html; charset=utf-8',
         'cache-control': 'public, max-age=300',
