@@ -1,6 +1,8 @@
 // instasepa.eu — static landing page advocating open SEPA payment standards
 // (EPC QR Code + SEPA Request-to-Pay). Served on instasepa.eu + www.
 
+import { handleBeacon, withBeacon } from './analytics.js';
+
 // EU flag: 12 five-pointed gold stars in a circle on blue (official geometry:
 // star circumradius = 1/18 of flag height, star centers on a circle of
 // radius 1/3 of flag height, one point of each star facing straight up).
@@ -207,11 +209,16 @@ function landingHtml() {
 </html>`;
 }
 
+// Visitor analytics: counted on the page's beacon, never on the request
+// itself, so clients that do not run JavaScript never reach the feed.
+const PAGE_HTML = withBeacon(landingHtml());
+
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/v') return handleBeacon(request, env, ctx);
     if (url.pathname === '/' || url.pathname === '/index.html') {
-      return new Response(landingHtml(), {
+      return new Response(PAGE_HTML, {
         headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=300' },
       });
     }

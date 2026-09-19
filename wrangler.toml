@@ -9,3 +9,13 @@ routes = [
   { pattern = "instasepa.eu", custom_domain = true },
   { pattern = "www.instasepa.eu", custom_domain = true },
 ]
+
+# Visitor analytics (same module as malta and the demo workers): daily
+# counters + Telegram DM. Namespace title on Cloudflare: "LANDING".
+[[kv_namespaces]]
+binding = "STATE"
+id = "a3e8afc8f7614d44a4dd895deaa864b7"
+
+# Secrets set via `wrangler secret put`:
+#   TELEGRAM_BOT_TOKEN   (same bot as the demo workers; analytics recipients
+#                         default to Alex's DM, override in KV key `analytics`)
