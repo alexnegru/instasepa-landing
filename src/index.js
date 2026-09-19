@@ -201,7 +201,7 @@ ${paperHtml()}
 
 <footer>
   <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-license applicant. It does not represent the position of the EPC or the ECB. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
-  Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a>
+  Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alexandru Negru</a>
 </footer>
 ${VIDEO_OVERLAY_HTML}
 <script>
@@ -236,6 +236,12 @@ const MARK_PNG = b64Bytes(MARK_PNG_B64);
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.hostname === 'www.instasepa.eu') {
+      return new Response(null, {
+        status: 301,
+        headers: { location: 'https://instasepa.eu' + url.pathname + url.search, 'cache-control': 'public, max-age=86400' },
+      });
+    }
     if (url.pathname === '/api/v') return handleBeacon(request, env, ctx);
     if (url.pathname === '/mark.png') {
       return new Response(MARK_PNG, {

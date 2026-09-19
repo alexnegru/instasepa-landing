@@ -214,7 +214,7 @@ export function paperHtml() {
     <h2>Proposal summary</h2>
     <p>Every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds originate from one SEPA IBAN and are credited to another SEPA IBAN maintained at a different bank.</p>
     <p>The EU has mandated instant payments and published the standards to initiate them at the point of sale. The opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, built by the market.</p>
-    <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist, at island scale, where coordination is achievable.</p>
+    <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist.</p>
   </div>
 </section>
 
@@ -302,7 +302,7 @@ export function paperHtml() {
     <p>A national payments capability must be safe, lawful and fair before it is fast.</p>
     <ul class="steps">
       <li><b>Irrevocability and disputes.</b> SEPA Instant payments are final; there is no chargeback. Protection therefore comes before authorisation: Verification of Payee confirms the payee first, and PSD2 liability and refund rules apply to unauthorised or incorrectly executed transactions. Merchant refunds run as ordinary credit transfers.</li>
-      <li><b>Competition law.</b> The coordination asked of the MFSA and the CBM is technical interoperability and standards adoption only, never price. There is no imposed interchange pricing and no coordinated fee split. We introduce a SEPA Interchange scheme as a structure and not at pricing level.</li>
+      <li><b>Competition law.</b> The coordination asked is technical interoperability and standards adoption only, never price. There is no imposed interchange pricing and no coordinated fee split. We introduce a SEPA Interchange scheme as a structure and not at pricing level.</li>
       <li><b>Data protection.</b> The design applies GDPR data minimisation and purpose limitation. Strong customer authentication and credentials remain with the customer's own bank. No third party holds them.</li>
     </ul>
   </div>
