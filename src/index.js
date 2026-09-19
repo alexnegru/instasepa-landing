@@ -2,6 +2,8 @@
 // (EPC QR Code + SEPA Request-to-Pay). Served on instasepa.eu + www.
 
 import { handleBeacon, withBeacon } from './analytics.js';
+import MARK_PNG_B64 from './mark.js';
+import { PAPER_CSS, paperHtml, VIDEO_OVERLAY_HTML, VIDEO_OVERLAY_JS, FAVICON_SVG } from './paper.js';
 
 // EU flag: 12 five-pointed gold stars in a circle on blue (official geometry:
 // star circumradius = 1/18 of flag height, star centers on a circle of
@@ -42,6 +44,7 @@ function landingHtml() {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>instaSEPA — open standards for instant SEPA payments</title>
 <meta name="description" content="EPC QR Code and SEPA Request-to-Pay: the open, pan-European standards that give SEPA payments a user experience as good as cards." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root {
@@ -85,23 +88,23 @@ function landingHtml() {
     color: var(--gold); font-weight: 700; padding: 10px 20px; border-radius: 999px;
     font-size: 15px; letter-spacing: 0.02em;
   }
-  main { max-width: 880px; margin: -26px auto 40px; padding: 0 20px; }
-  .card {
+  main { max-width: 880px; margin: 40px auto 40px; padding: 0 20px; }
+  main > .card {
     background: var(--card); border: 1px solid var(--border); border-radius: 16px;
     padding: 30px 32px; margin-bottom: 22px;
     box-shadow: 0 2px 6px rgba(15,23,42,0.05), 0 12px 34px rgba(15,23,42,0.06);
   }
-  .card h2 {
+  main > .card h2 {
     margin: 0 0 12px; font-size: 20px; color: var(--eu-blue);
     display: flex; align-items: center; gap: 10px;
   }
-  .card h2 .tag {
+  main > .card h2 .tag {
     font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--eu-blue);
     background: #E8EDFB; border: 1px solid #C9D6F5; padding: 3px 10px; border-radius: 999px;
   }
-  .card p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.65; color: var(--muted); }
-  .card p:last-child { margin-bottom: 0; }
-  .card strong { color: var(--ink); }
+  main > .card p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.65; color: var(--muted); }
+  main > .card p:last-child { margin-bottom: 0; }
+  main > .card strong { color: var(--ink); }
   .epc-demo {
     display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap;
     margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
@@ -124,6 +127,8 @@ function landingHtml() {
   }
   footer a { color: var(--eu-blue); font-weight: 600; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+  footer .about { max-width: 60em; margin: 0 auto 14px; font-size: 13px; line-height: 1.6; }
+${PAPER_CSS}
 </style>
 </head>
 <body>
@@ -133,12 +138,14 @@ function landingHtml() {
     ${sepaMark}
   </div>
   <h1>Welcome to open standards to make SEPA payments have a UX (User&nbsp;Experience) as good as the UX that <em>VISA</em> and <em>Mastercard</em> have today.</h1>
-  <p class="call">For these, all <strong>EEA banks</strong> should join the pan-European solution and adopt:</p>
+  <p class="call">For this to happen, we invite all <strong>EEA banks</strong> to join the <strong>instaSEPA</strong> pan-European initiative and adopt:</p>
   <div class="standards">
     <span>EPC QR Code standard</span>
     <span>SRTP &mdash; SEPA Request-to-Pay</span>
   </div>
 </header>
+
+${paperHtml()}
 
 <main>
   <section class="card">
@@ -193,8 +200,13 @@ function landingHtml() {
 </main>
 
 <footer>
+  <p class="about">About this page: this is a discussion draft contributed by smartIBAN, a Malta-license applicant. It does not represent the position of the EPC or the ECB. The instaSEPA mark is proposed as a shared, openly governed acceptance brand, not a single company's product.</p>
   Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alex</a>
 </footer>
+${VIDEO_OVERLAY_HTML}
+<script>
+${VIDEO_OVERLAY_JS}
+</script>
 <script>
 (function () {
   if (typeof QRCode === 'undefined') return;
@@ -213,10 +225,28 @@ function landingHtml() {
 // itself, so clients that do not run JavaScript never reach the feed.
 const PAGE_HTML = withBeacon(landingHtml());
 
+function b64Bytes(b64) {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes;
+}
+const MARK_PNG = b64Bytes(MARK_PNG_B64);
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/api/v') return handleBeacon(request, env, ctx);
+    if (url.pathname === '/mark.png') {
+      return new Response(MARK_PNG, {
+        headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' },
+      });
+    }
+    if (url.pathname === '/favicon.svg') {
+      return new Response(FAVICON_SVG, {
+        headers: { 'content-type': 'image/svg+xml', 'cache-control': 'public, max-age=86400' },
+      });
+    }
     if (url.pathname === '/' || url.pathname === '/index.html') {
       return new Response(PAGE_HTML, {
         headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=300' },
