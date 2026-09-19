@@ -137,7 +137,7 @@ ${PAPER_CSS}
     ${euFlagSvg(150)}
     ${sepaMark}
   </div>
-  <h1>Welcome to open standards to make SEPA payments have a UX (User&nbsp;Experience) as good as the UX that <em>VISA</em> and <em>Mastercard</em> have today.</h1>
+  <h1>Open standards to make SEPA payments have an UX (User&nbsp;Experience) as good as the UX that <em>VISA</em> and <em>Mastercard</em> have today.</h1>
   <p class="call">For this to happen, we invite all <strong>EEA banks</strong> to join the <strong>instaSEPA</strong> pan-European initiative and adopt:</p>
   <div class="standards">
     <span>EPC QR Code standard</span>
