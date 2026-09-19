@@ -115,6 +115,8 @@ export const PAPER_CSS = `
   }
   .paper .btn.primary { background: var(--blue); color: #FFFFFF; }
   .paper .btn.ghost { border: 2px solid var(--blue); color: var(--blue); }
+  .paper button.btn { border: 0; cursor: pointer; font-family: inherit; }
+  .paper .join-row { margin-top: 18px; }
   .paper .phero-mark { text-align: center; }
   .paper .phero-mark img { max-width: 100%; height: auto; border-radius: 14px; }
   .paper .phero-mark .cap { font-size: 13px; color: var(--pmuted); margin-top: 10px; }
@@ -198,7 +200,7 @@ export function paperHtml() {
 <div class="wrap phero">
   <div class="phero-grid">
     <div>
-      <div class="eyebrow">Coordinated adoption of EPC QR and SEPA Request-to-Pay in Europe</div>
+      <div class="eyebrow">Coordinated adoption of EPC QR and SEPA Request-to-Pay in Europe - draft paper September 2026</div>
       <h2 class="headline">Europe can run POS retail payments on SEPA</h2>
       <p class="lead">Every euro-area citizen already has the rails to pay directly from a bank account. The market still needs coordination to use these rails at the till and the checkout. This paper proposes that Europe coordinate its banks, payment institutions and fintechs around standards Europe has already published: EPC QR codes and SEPA Request-to-Pay, settled by SEPA Instant Credit Transfer. Payments in European shops and on European websites can then run on SEPA instead of international card networks.</p>
     </div>
@@ -215,6 +217,7 @@ export function paperHtml() {
     <p>Every citizen uses their own banking app in a shop: tap via NFC and pay in a matter of seconds, with the same user experience as card payments, while the funds originate from one SEPA IBAN and are credited to another SEPA IBAN maintained at a different bank.</p>
     <p>The EU has mandated instant payments and published the standards to initiate them at the point of sale. The opportunity to execute easily the coordination between the two sides of the market: i) have all the banks &amp; PIs support SEPA-NFC &amp; QR-code, and ii) bring the physical-shop &amp; ecommerce merchants on board too. We propose a measured pilot, built by the market.</p>
     <p>No new scheme. No new clearing house. No proprietary network. Just adoption of standards that already exist.</p>
+    <p class="join-row"><button type="button" class="btn primary join-open">Join / Contact</button></p>
   </div>
 </section>
 
@@ -356,6 +359,7 @@ export function paperHtml() {
   <div class="wrap">
     <h2>Closing</h2>
     <p>Cards solved the user experience. SEPA already solved the money movement.</p>
+    <p class="join-row"><button type="button" class="btn primary join-open">Join / Contact</button></p>
   </div>
 </section>
 

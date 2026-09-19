@@ -4,6 +4,7 @@
 import { handleBeacon, withBeacon } from './analytics.js';
 import MARK_PNG_B64 from './mark.js';
 import { PAPER_CSS, paperHtml, VIDEO_OVERLAY_HTML, VIDEO_OVERLAY_JS, FAVICON_SVG } from './paper.js';
+import { handleJoin } from './join.js';
 
 // EU flag: 12 five-pointed gold stars in a circle on blue (official geometry:
 // star circumradius = 1/18 of flag height, star centers on a circle of
@@ -34,7 +35,7 @@ function euFlagSvg(width) {
 const sepaMark = `<svg width="150" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SEPA">
 <rect width="180" height="120" rx="14" fill="#10298E"/>
 <text x="90" y="74" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-style="italic" font-size="44" fill="#FFCC00" text-anchor="middle">SEPA</text>
-<text x="90" y="98" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#9FB3E8" text-anchor="middle" letter-spacing="1">SINGLE EURO PAYMENTS AREA</text></svg>`;
+<text x="90" y="97" font-family="Arial, Helvetica, sans-serif" font-size="8.5" fill="#9FB3E8" text-anchor="middle" letter-spacing="0.6">SINGLE EURO PAYMENTS AREA</text></svg>`;
 
 function landingHtml() {
   return `<!doctype html>
@@ -129,6 +130,35 @@ function landingHtml() {
   footer a:hover { text-decoration: underline; }
   footer .about { max-width: 60em; margin: 0 auto 14px; font-size: 13px; line-height: 1.6; }
 ${PAPER_CSS}
+  .joverlay {
+    position: fixed; inset: 0; z-index: 60; background: rgba(8, 26, 84, 0.80);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .joverlay[hidden] { display: none; }
+  .jbox {
+    position: relative; width: 100%; max-width: 440px; background: #fff; color: var(--ink);
+    border-radius: 16px; padding: 28px 26px 24px; box-shadow: 0 18px 50px rgba(8, 26, 84, 0.35);
+  }
+  .jbox h3 { margin: 0 32px 8px 0; font-size: 20px; color: var(--eu-blue); }
+  .jbox p { margin: 0 0 14px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .jbox label { display: block; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .jbox input[type="text"] {
+    width: 100%; font: inherit; font-size: 16px; padding: 11px 12px;
+    border: 1px solid #C9D6F5; border-radius: 10px; color: var(--ink); background: #fff;
+  }
+  .jbox input[type="text"]:focus { outline: 3px solid rgba(0, 51, 153, 0.35); outline-offset: 1px; border-color: var(--eu-blue); }
+  .jhp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .jbtn {
+    margin-top: 14px; width: 100%; font: inherit; font-weight: 700; font-size: 15.5px;
+    padding: 12px 20px; border: 0; border-radius: 10px; background: var(--eu-blue); color: #fff; cursor: pointer;
+  }
+  .jbtn:disabled { opacity: 0.6; cursor: default; }
+  .jmsg { min-height: 1.4em; margin: 12px 0 0; font-size: 14px; color: var(--ink); }
+  .jclose {
+    position: absolute; top: 12px; right: 12px; width: 34px; height: 34px;
+    border: 0; border-radius: 50%; background: #E8EDFB; color: #081A54;
+    font-size: 20px; font-weight: 700; line-height: 1; cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -204,6 +234,74 @@ ${paperHtml()}
   Maintained by <a href="https://www.linkedin.com/in/alexmtzcom" target="_blank" rel="noopener">Alexandru Negru</a>
 </footer>
 ${VIDEO_OVERLAY_HTML}
+<div class="joverlay" id="join-overlay" hidden>
+  <div class="jbox" role="dialog" aria-modal="true" aria-labelledby="join-title">
+    <button type="button" class="jclose" id="join-close" aria-label="Close">&#215;</button>
+    <h3 id="join-title">Join the instaSEPA initiative</h3>
+    <p>Leave an email address or a phone number. We contact you directly.</p>
+    <form id="join-form" novalidate>
+      <label for="join-contact">Email address or phone number</label>
+      <input id="join-contact" name="c" type="text" autocomplete="email" maxlength="120" required />
+      <input id="join-web" name="w" type="text" class="jhp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button type="submit" class="jbtn" id="join-submit">Send</button>
+    </form>
+    <p class="jmsg" id="join-msg" aria-live="polite"></p>
+  </div>
+</div>
+<script>
+(function () {
+  var overlay = document.getElementById('join-overlay');
+  var form = document.getElementById('join-form');
+  var input = document.getElementById('join-contact');
+  var msg = document.getElementById('join-msg');
+  var btn = document.getElementById('join-submit');
+  if (!overlay || !form) return;
+  var last = null;
+  function openJoin(e) {
+    last = e.currentTarget;
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    msg.textContent = '';
+    form.hidden = false;
+    input.focus();
+  }
+  function closeJoin() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    if (last) last.focus();
+  }
+  var opens = document.querySelectorAll('.join-open');
+  for (var i = 0; i < opens.length; i++) opens[i].addEventListener('click', openJoin);
+  document.getElementById('join-close').addEventListener('click', closeJoin);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeJoin(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.hidden) closeJoin();
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var c = input.value.trim();
+    if (!c) { msg.textContent = 'Enter an email address or a phone number.'; input.focus(); return; }
+    btn.disabled = true;
+    msg.textContent = 'Sending...';
+    fetch('/api/join', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ c: c, w: document.getElementById('join-web').value })
+    }).then(function (r) {
+      return r.json().catch(function () { return { ok: false }; });
+    }).then(function (j) {
+      btn.disabled = false;
+      if (j.ok) { form.hidden = true; msg.textContent = 'Thank you. We will contact you.'; return; }
+      if (j.error === 'invalid') { msg.textContent = 'That does not look like an email address or a phone number.'; return; }
+      if (j.error === 'rate') { msg.textContent = 'Too many requests from your network. Try again in ten minutes.'; return; }
+      msg.textContent = 'Something went wrong. Contact us on LinkedIn instead.';
+    }).catch(function () {
+      btn.disabled = false;
+      msg.textContent = 'Network error. Try again.';
+    });
+  });
+})();
+</script>
 <script>
 ${VIDEO_OVERLAY_JS}
 </script>
@@ -243,6 +341,7 @@ export default {
       });
     }
     if (url.pathname === '/api/v') return handleBeacon(request, env, ctx);
+    if (url.pathname === '/api/join') return handleJoin(request, env, ctx);
     if (url.pathname === '/mark.png') {
       return new Response(MARK_PNG, {
         headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' },
