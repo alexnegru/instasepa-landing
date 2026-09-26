@@ -167,8 +167,8 @@ ${PAPER_CSS}
     ${euFlagSvg(150)}
     ${sepaMark}
   </div>
-  <h1>Open standards to make SEPA payments have an UX (User&nbsp;Experience) as good as the UX that <em>VISA</em> and <em>Mastercard</em> have today.</h1>
-  <p class="call">For this to happen, we invite all <strong>EEA banks</strong> to join the <strong>instaSEPA</strong> pan-European initiative and adopt:</p>
+  <h1>instaSEPA is not a company. instaSEPA is an open market-coordination initiative to promote the SRTP scheme and its POS/NFC technical implementation under one public-domain brand: <em>&ldquo;instaSEPA accepted here&rdquo;</em>.</h1>
+  <p class="call">We invite all <strong>Credit Institutions</strong> and <strong>Payment Institutions</strong> to adopt these EPC open standards:</p>
   <div class="standards">
     <span>EPC QR Code standard</span>
     <span>SRTP &mdash; SEPA Request-to-Pay</span>
