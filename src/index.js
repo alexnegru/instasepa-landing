@@ -73,7 +73,7 @@ function landingHtml() {
   .flags svg { border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.35); height: auto; }
   .hero h1 {
     max-width: 780px; margin: 0 auto 22px;
-    font-size: clamp(22px, 3.4vw, 34px); font-weight: 700; line-height: 1.35;
+    font-size: clamp(19px, 3.4vw, 31px); font-weight: 700; line-height: 1.35;
   }
   .hero h1 em { color: var(--gold); font-style: normal; }
   .hero .call {
