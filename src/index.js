@@ -5,6 +5,8 @@ import { handleBeacon, withBeacon } from './analytics.js';
 import MARK_PNG_B64 from './mark.js';
 import { PAPER_CSS, paperHtml, VIDEO_OVERLAY_HTML, VIDEO_OVERLAY_JS, FAVICON_SVG } from './paper.js';
 import { handleJoin } from './join.js';
+import { CONTENT_KEY, extractBlocks, applyOverrides, freshRaw } from './content.js';
+import { handleAdmin } from './admin.js';
 
 // EU flag: 12 five-pointed gold stars in a circle on blue (official geometry:
 // star circumradius = 1/18 of flag height, star centers on a circle of
@@ -321,7 +323,28 @@ ${VIDEO_OVERLAY_JS}
 
 // Visitor analytics: counted on the page's beacon, never on the request
 // itself, so clients that do not run JavaScript never reach the feed.
-const PAGE_HTML = withBeacon(landingHtml());
+// The text in this file is the default. Saved edits from /admin are spliced
+// into it per request, from KV, and memoised per isolate.
+const DEFAULT_HTML = landingHtml();
+const BLOCKS = extractBlocks(DEFAULT_HTML);
+const PLAIN_HTML = withBeacon(DEFAULT_HTML);
+let memo = { raw: null, html: PLAIN_HTML };
+
+async function pageHtml(env) {
+  let raw = freshRaw();
+  if (raw === null) {
+    try {
+      if (env && env.STATE) raw = await env.STATE.get(CONTENT_KEY, { cacheTtl: 60 });
+    } catch (e) { raw = null; }
+  }
+  if (!raw || raw === '{}') return PLAIN_HTML;
+  if (memo.raw === raw) return memo.html;
+  let items = {};
+  try { items = JSON.parse(raw) || {}; } catch (e) { return PLAIN_HTML; }
+  const html = withBeacon(applyOverrides(DEFAULT_HTML, BLOCKS, items));
+  memo = { raw, html };
+  return html;
+}
 
 function b64Bytes(b64) {
   const bin = atob(b64);
@@ -340,6 +363,9 @@ export default {
         headers: { location: 'https://instasepa.eu' + url.pathname + url.search, 'cache-control': 'public, max-age=86400' },
       });
     }
+    if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
+      return handleAdmin(request, env, ctx, DEFAULT_HTML);
+    }
     if (url.pathname === '/api/v') return handleBeacon(request, env, ctx);
     if (url.pathname === '/api/join') return handleJoin(request, env, ctx);
     if (url.pathname === '/mark.png') {
@@ -353,8 +379,8 @@ export default {
       });
     }
     if (url.pathname === '/' || url.pathname === '/index.html') {
-      return new Response(PAGE_HTML, {
-        headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=300' },
+      return new Response(await pageHtml(env), {
+        headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=30' },
       });
     }
     return Response.redirect(url.origin + '/', 302);
