@@ -87,8 +87,8 @@ function seqSvg() {
     if (line2) t += '<text x="' + cx + '" y="' + (y + 37) + '" font-size="12.5" fill="#7A6200" text-anchor="middle">' + line2 + '</text>';
     return t;
   }
-  s += msg(124, 336, 110, '&#9312; NFC tap', 'the phone sends a unique IBAN');
-  s += msg(344, 576, 175, '&#9313; amount + unique IBAN', '');
+  s += msg(124, 336, 110, '&#9312; NFC tap', 'the phone sends a disposable unique vIBAN');
+  s += msg(344, 576, 175, '&#9313; amount + unique vIBAN', '');
   s += msg(584, 786, 240, '&#9314; Request-to-Pay (SRTP)', 'addressed to unique disposable vIBAN');
   s += note(768, 280, 236, '&#9315; finds the real IBAN account', 'behind the disposable unique vIBAN');
   s += msg(786, 124, 375, '&#9316; payment request appears in the banking app', '');
