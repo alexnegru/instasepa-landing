@@ -362,10 +362,10 @@ function pageHtml() {
     <h2>What happens on a tap for SEPA NFC pay</h2>
     <p>The diagram shows the target flow, with SEPA Request-to-Pay end to end.</p>
     <div class="diagram" tabindex="0" role="region" aria-label="Message sequence diagram">${seqSvg()}</div>
+    <p>The buyer holds the phone against the till. The banking app transmits a disposable unique vIBAN over NFC.</p>
     <ol class="steps">
-      <li>The buyer holds the phone against the till. The banking app transmits a unique IBAN over NFC.</li>
-      <li>The till sends a Request-to-Pay to that unique IBAN. The request contains the amount and the merchant name.</li>
-      <li>The issuing bank maps the unique IBAN to the buyer's real account and shows the request in the banking app.</li>
+      <li>The till sends a Request-to-Pay to that unique vIBAN. The request contains the amount and the merchant name.</li>
+      <li>The issuing bank maps the unique vIBAN to the buyer's real IBAN account and shows the request in the banking app.</li>
       <li>The buyer approves with strong customer authentication (SCA).</li>
       <li>The issuing bank sends an SCT Inst transfer to the acquirer. The acquirer credits the merchant and confirms to the till.</li>
     </ol>
