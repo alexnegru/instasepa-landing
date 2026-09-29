@@ -25,19 +25,20 @@ const fundsFlowSvg = '<svg viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/s
   '<rect x="20" y="70" width="200" height="86" rx="12" fill="#F5F7FC" stroke="#10298E" stroke-width="2"/>' +
   '<text x="120" y="105" font-size="17" font-weight="bold" fill="#0A1E6B" text-anchor="middle">Buyer</text>' +
   '<text x="120" y="128" font-size="12.5" fill="#58627A" text-anchor="middle">account at the issuing bank</text>' +
-  '<rect x="350" y="70" width="200" height="86" rx="12" fill="#F5F7FC" stroke="#10298E" stroke-width="2"/>' +
-  '<text x="450" y="105" font-size="17" font-weight="bold" fill="#0A1E6B" text-anchor="middle">Acquiring vIBAN</text>' +
-  '<text x="450" y="128" font-size="12.5" fill="#58627A" text-anchor="middle">acquiring bank or PSP</text>' +
+  '<rect x="338" y="70" width="224" height="86" rx="12" fill="#F5F7FC" stroke="#10298E" stroke-width="2"/>' +
+  '<text x="450" y="99" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">Acquiring disposable</text>' +
+  '<text x="450" y="118" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">unique vIBAN</text>' +
+  '<text x="450" y="138" font-size="12.5" fill="#58627A" text-anchor="middle">acquiring bank or PSP</text>' +
   '<rect x="680" y="70" width="200" height="86" rx="12" fill="#F5F7FC" stroke="#10298E" stroke-width="2"/>' +
   '<text x="780" y="105" font-size="17" font-weight="bold" fill="#0A1E6B" text-anchor="middle">Merchant</text>' +
   '<text x="780" y="128" font-size="12.5" fill="#58627A" text-anchor="middle">shop or webshop</text>' +
   // arrows across
-  '<line x1="222" y1="113" x2="346" y2="113" stroke="#10298E" stroke-width="2.5" marker-end="url(#ar1)"/>' +
-  '<text x="284" y="98" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">&#8364;100.00</text>' +
-  '<text x="284" y="134" font-size="12" fill="#58627A" text-anchor="middle">SCT Inst, seconds</text>' +
-  '<line x1="552" y1="113" x2="676" y2="113" stroke="#10298E" stroke-width="2.5" marker-end="url(#ar1)"/>' +
-  '<text x="614" y="98" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">&#8364;99.00</text>' +
-  '<text x="614" y="134" font-size="12" fill="#58627A" text-anchor="middle">instant credit</text>' +
+  '<line x1="222" y1="113" x2="334" y2="113" stroke="#10298E" stroke-width="2.5" marker-end="url(#ar1)"/>' +
+  '<text x="278" y="98" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">&#8364;100.00</text>' +
+  '<text x="278" y="134" font-size="12" fill="#58627A" text-anchor="middle">SCT Inst, seconds</text>' +
+  '<line x1="564" y1="113" x2="676" y2="113" stroke="#10298E" stroke-width="2.5" marker-end="url(#ar1)"/>' +
+  '<text x="620" y="98" font-size="15" font-weight="bold" fill="#0A1E6B" text-anchor="middle">&#8364;99.00</text>' +
+  '<text x="620" y="134" font-size="12" fill="#58627A" text-anchor="middle">instant credit</text>' +
   // buyer pays nothing extra
   '<rect x="45" y="176" width="150" height="34" rx="17" fill="#FFF6CC" stroke="#E3B800" stroke-width="1.5"/>' +
   '<text x="120" y="198" font-size="13.5" font-weight="bold" fill="#7A6200" text-anchor="middle">pays &#8364;0.00 extra</text>' +
