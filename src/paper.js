@@ -75,8 +75,8 @@ function seqSvg() {
   }
   s += msg(124, 336, 110, '&#9312; NFC tap', 'the phone sends a unique IBAN');
   s += msg(344, 576, 175, '&#9313; amount + unique IBAN', '');
-  s += msg(584, 786, 240, '&#9314; Request-to-Pay (SRTP)', 'addressed to the unique IBAN');
-  s += note(790, 280, 195, '&#9315; finds the real account', 'behind the unique IBAN');
+  s += msg(584, 786, 240, '&#9314; Request-to-Pay (SRTP)', 'addressed to unique disposable vIBAN');
+  s += note(768, 280, 236, '&#9315; finds the real IBAN account', 'behind the disposable unique vIBAN');
   s += msg(786, 124, 375, '&#9316; payment request appears in the banking app', '');
   s += note(120, 400, 190, '&#9317; buyer approves', 'with SCA');
   s += msg(786, 584, 480, '&#9318; SCT Inst transfer', '');

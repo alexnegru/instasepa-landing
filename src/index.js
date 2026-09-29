@@ -167,7 +167,7 @@ ${PAPER_CSS}
     ${euFlagSvg(150)}
     ${sepaMark}
   </div>
-  <h1>instaSEPA is not a company. instaSEPA is an open market-coordination initiative to promote the SRTP scheme and its POS/NFC technical implementation under one public-domain brand: <em>&ldquo;instaSEPA accepted here&rdquo;</em>.</h1>
+  <h1>instaSEPA is not a company. instaSEPA is an open market-coordination initiative to promote the SRTP scheme and an NFC for IP@POI technical implementation under one public-domain brand: <em>&ldquo;instaSEPA accepted here&rdquo;</em>.</h1>
   <p class="call">We invite all <strong>Credit Institutions</strong> and <strong>Payment Institutions</strong> to adopt these EPC open standards:</p>
   <div class="standards">
     <span>EPC QR Code standard</span>
