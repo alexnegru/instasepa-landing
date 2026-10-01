@@ -174,6 +174,7 @@ ${a.items.map((s) => {
     return `<div class="b">
   <div class="k"><span class="tagpill">${esc(s.tag)}</span><span>${esc(s.key)}</span>${s.edited ? '<span class="edited">edited</span>' : ''}${s.stale ? '<span class="stalepill">stale, the code text changed</span>' : ''}</div>
   ${s.stale ? '<div class="old">Your saved text, not shown on the page:\n' + esc(s.saved) + '</div>' : ''}
+  <input type="hidden" name="__o:${esc(s.key)}" value="${esc(s.value)}" />
   <textarea name="${esc(s.key)}" rows="${rows}">${esc(s.value)}</textarea>
 </div>`;
   }).join('\n')}
@@ -189,7 +190,6 @@ ${a.items.map((s) => {
   ${flash ? '<div class="flash">' + esc(flash) + '</div>' : ''}
   <div class="warn">Edit the text, then save. Clear a box to put the original text back. HTML tags such as &lt;b&gt; and &lt;a&gt; are allowed. Your change shows at once on the link above, and reaches every visitor within about a minute.</div>
   <form method="POST" action="/admin/save">
-    <input type="hidden" name="__all" value="1" />
     ${body}
     <div class="bar">
       <button type="submit">Save changes</button>
@@ -238,26 +238,24 @@ export async function handleAdmin(request, env, ctx, defaultHtml) {
     if (request.method !== 'POST' || !sameOrigin(request)) return redirect('/admin');
     const form = await request.formData();
     const items = await readItems(env);
-    // The editor posts every block, so that save is authoritative and needs no
-    // merge. A partial post (a script, one field) merges instead.
-    const full = form.get('__all') === '1';
-    const next = full ? {} : { ...items };
+    const next = { ...items };
     const changed = [];
     const reverted = [];
     const now = new Date().toISOString();
+    // Each box carries the text it was rendered with. A box whose text is
+    // unchanged is never written, so an editor page opened on an older copy
+    // cannot put old words back, and one person's save cannot undo another's.
     for (const b of blocks) {
-      const had = items[b.key];
-      const isStale = !!(had && had.d !== undefined && had.d !== b.html);
-      if (!form.has(b.key)) { if (full && had) next[b.key] = had; continue; }
+      if (!form.has(b.key)) continue;
       const v = cleanValue(form.get(b.key));
+      const shown = form.has('__o:' + b.key) ? cleanValue(form.get('__o:' + b.key)) : null;
+      if (shown !== null && v === shown) continue;
+      const had = items[b.key];
       if (!v || v === b.html) {
-        // a stale entry holds words the page is not showing: keep them until
-        // this block is deliberately rewritten
-        if (isStale) { next[b.key] = had; continue; }
         if (had) { delete next[b.key]; reverted.push(b.key); }
         continue;
       }
-      if (had && had.v === v && had.d === b.html) { next[b.key] = had; continue; }
+      if (had && had.v === v && had.d === b.html) continue;
       next[b.key] = { v, d: b.html, at: now };
       changed.push(b.key);
     }

@@ -181,6 +181,29 @@ ${paperHtml()}
 
 <main>
   <section class="card">
+    <h2>SRTP &mdash; SEPA Request-to-Pay <span class="tag">EPC SRTP scheme</span></h2>
+    <p><strong>SEPA Request-to-Pay</strong> is the EPC scheme that lets a payee send a structured payment request (pain.013) through the banking network straight to the payer's own app. The payer gets a notification, reviews the amount and the merchant's name, and approves with strong customer authentication — which triggers an instant SEPA credit transfer back to the payee.</p>
+    <p>It is the open, account-to-account answer to "tap to approve": request, notify, authenticate, settle — in seconds, at European scale. Adopted by all EEA banks, SRTP would give every merchant and subscription business a native, card-free way to collect payments with a user experience equal to the best card wallets.</p>
+    <div class="epc-demo">
+      <div class="epc-fields">
+        <h3>Technical overview — the EPC scheme</h3>
+        <table class="epc-table">
+          <tr><td>Scheme rulebook</td><td>EPC SEPA Request-to-Pay (SRTP) Scheme Rulebook</td></tr>
+          <tr><td>Message standard</td><td>ISO 20022</td></tr>
+          <tr><td>Request message</td><td>pain.013 &mdash; payment activation request (payee &rarr; payer)</td></tr>
+          <tr><td>Status message</td><td>pain.014 &mdash; accept / reject status report (payer &rarr; payee)</td></tr>
+          <tr><td>Model</td><td>4-corner: payee &harr; payee's RTP provider &harr; payer's RTP provider &harr; payer</td></tr>
+          <tr><td>Transport</td><td>API-based exchange between RTP service providers (EPC API specifications)</td></tr>
+          <tr><td>Payer options</td><td>Accept now &middot; accept later &middot; reject; requests carry an expiry date/time</td></tr>
+          <tr><td>Funds movement</td><td>none &mdash; SRTP is messaging only; settlement follows as SCT / SCT Inst</td></tr>
+          <tr><td>Participants</td><td>PSPs and licensed non-PSP RTP service providers</td></tr>
+          <tr><td>Authentication</td><td>payer approves in their own app with SCA (PSD2 Art. 97)</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
     <h2>The EPC QR Code standard <span class="tag">EPC069-12</span></h2>
     <p>The <strong>EPC QR Code</strong> is the European Payments Council's open standard for <strong>scan-to-pay</strong> SEPA Credit Transfers. One QR code encodes everything a payment needs — beneficiary name, IBAN, amount and reference — so the payer simply scans it with their own banking app, sees a fully pre-filled transfer, and approves it with one tap.</p>
     <p>No card networks, no interchange fees, no manual IBAN typing — and combined with <strong>SEPA Instant</strong>, the money arrives in seconds. Banking apps in Austria, Belgium, Germany, Finland and the Netherlands already scan it today; when <strong>every</strong> EEA banking app does, any invoice, checkout or donation box in Europe becomes payable in one scan.</p>
@@ -203,29 +226,6 @@ ${paperHtml()}
       <div class="epc-qr">
         <div class="qrbox"><div id="epcqr"></div></div>
         <div class="cap">A live example built from the fields on the left — scan it with your banking app and it pre-fills a <strong>&euro;1.00</strong> SEPA transfer to the maintainer's Revolut account.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>SRTP &mdash; SEPA Request-to-Pay <span class="tag">EPC SRTP scheme</span></h2>
-    <p><strong>SEPA Request-to-Pay</strong> is the EPC scheme that lets a payee send a structured payment request (pain.013) through the banking network straight to the payer's own app. The payer gets a notification, reviews the amount and the merchant's name, and approves with strong customer authentication — which triggers an instant SEPA credit transfer back to the payee.</p>
-    <p>It is the open, account-to-account answer to "tap to approve": request, notify, authenticate, settle — in seconds, at European scale. Adopted by all EEA banks, SRTP would give every merchant and subscription business a native, card-free way to collect payments with a user experience equal to the best card wallets.</p>
-    <div class="epc-demo">
-      <div class="epc-fields">
-        <h3>Technical overview — the EPC scheme</h3>
-        <table class="epc-table">
-          <tr><td>Scheme rulebook</td><td>EPC SEPA Request-to-Pay (SRTP) Scheme Rulebook</td></tr>
-          <tr><td>Message standard</td><td>ISO 20022</td></tr>
-          <tr><td>Request message</td><td>pain.013 &mdash; payment activation request (payee &rarr; payer)</td></tr>
-          <tr><td>Status message</td><td>pain.014 &mdash; accept / reject status report (payer &rarr; payee)</td></tr>
-          <tr><td>Model</td><td>4-corner: payee &harr; payee's RTP provider &harr; payer's RTP provider &harr; payer</td></tr>
-          <tr><td>Transport</td><td>API-based exchange between RTP service providers (EPC API specifications)</td></tr>
-          <tr><td>Payer options</td><td>Accept now &middot; accept later &middot; reject; requests carry an expiry date/time</td></tr>
-          <tr><td>Funds movement</td><td>none &mdash; SRTP is messaging only; settlement follows as SCT / SCT Inst</td></tr>
-          <tr><td>Participants</td><td>PSPs and licensed non-PSP RTP service providers</td></tr>
-          <tr><td>Authentication</td><td>payer approves in their own app with SCA (PSD2 Art. 97)</td></tr>
-        </table>
       </div>
     </div>
   </section>
